@@ -11,6 +11,7 @@ import { NotesPage } from "@/features/notes/NotesPage";
 import { FlashcardsPage } from "@/features/flashcards/FlashcardsPage";
 import { DeckPage } from "@/features/flashcards/DeckPage";
 import { StudySession } from "@/features/flashcards/StudySession";
+import { GradesPage, SubjectGradesPage } from "@/features/grades/GradesPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { AppShell } from "@/app/AppShell";
@@ -46,7 +47,8 @@ const router = createHashRouter([
       { path: "flashcards/study", element: <StudySession /> },
       { path: "flashcards/:deckId", element: <DeckPage /> },
       { path: "flashcards/:deckId/study", element: <StudySession /> },
-      { path: "grades", element: <PlaceholderPage titleKey="nav.grades" /> },
+      { path: "grades", element: <GradesPage /> },
+      { path: "grades/:subjectId", element: <SubjectGradesPage /> },
       { path: "files", element: <PlaceholderPage titleKey="nav.files" /> },
       { path: "documents", element: <PlaceholderPage titleKey="nav.documents" /> },
       { path: "tools", element: <PlaceholderPage titleKey="nav.tools" /> },

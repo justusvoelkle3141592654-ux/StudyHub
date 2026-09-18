@@ -69,6 +69,10 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] Dashboard tile shows the number of cards due today
 - [x] Playwright test: deck + cards + full study session
 ## Phase 7 – Grades
+- [x] `gradeMath.ts`: weighted / unweighted averages, overall average (mean of subject averages), scale conversion (points ↔ grade via (17 − p)/3, percent ↔ grade via documented anchors), target grade solver; unit tests
+- [x] Overview page with subject averages and overall average; subject page with grade list, history chart (SVG) and target grade calculator
+- [x] Supports the three scales from the wizard, weighting on/off; grades module hidden when "no grades module" was chosen
+- [x] Playwright test: grades + averages + target calculator
 ## Phase 8 – Files and file-system access, backups
 ## Phase 9 – Cloud mode (Supabase)
 ## Phase 10 – Office module
@@ -88,6 +92,7 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 | D7 | The app data folder is named after the Tauri identifier (`de.studyhub.app`), i.e. `%APPDATA%\de.studyhub.app\studyhub.db` instead of `…\StudyHub\…`. | Android requires a reverse-domain identifier; Tauri derives the folder from it. |
 | D8 | Anki import supports the plain-text export ("Notes in Plain Text", .txt with `#separator` headers), not `.apkg` archives. | `.apkg` is a zip with an SQLite database inside; parsing it in the WebView would need a zip + SQLite reader and adds little value for a first-run import. |
 | D9 | Secrets (API key, later auth tokens) are stored through Rust: `keyring` crate (Windows Credential Manager) on desktop, a JSON file in the app-private directory on Android (no keyring backend exists there; Android isolates and encrypts app-private storage). In the browser dev build they live in `sessionStorage`. | Brief 3.6 / 4 step 12: never store secrets in SQLite or logs. |
+| D10 | Percent → grade conversion uses piecewise linear anchors 100→1, 85→2, 70→3, 50→4, 30→5, 0→6; it is only applied when a grade's scale differs from the configured scale (e.g. after switching scales). | Schools differ in their percent tables; a transparent, documented default is better than a hidden one. |
 | D4 | Versions verified against the registries on 2026-09-18: Vite 8.3, React 18.3.1, TypeScript 5.9.3, Tailwind 4.3, Tauri 2.11 (crates 2.x, npm `@tauri-apps/*` 2.x), Vitest 5.0, Playwright 1.63. | Brief section 7: no invented dependencies. |
 
 ## Open questions for the project owner

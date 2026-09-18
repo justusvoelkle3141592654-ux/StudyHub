@@ -112,3 +112,12 @@ Wird in Phase 9 implementiert (`src/sync/syncEngine.ts`); das Verfahren ist wie 
 Server-seitig existieren dieselben Tabellen mit zusätzlicher Spalte `rev BIGINT`, die per
 Trigger bei jedem Update hochgezählt wird; Row Level Security erlaubt nur Zeilen mit
 `user_id = auth.uid()`.
+
+## 6. Notenberechnung
+
+- Fachdurchschnitt = gewichtetes Mittel der Noten des Fachs (Gewicht 1, wenn Gewichtung deaktiviert).
+- Gesamtdurchschnitt = Mittel der Fachdurchschnitte (jedes Fach zählt einmal).
+- Umrechnung bei abweichender Skala einer Note: Punkte ↔ Note über `Note = (17 − Punkte) / 3`;
+  Prozent ↔ Note stückweise linear über die Stützstellen 100→1, 85→2, 70→3, 50→4, 30→5, 0→6.
+- Zielnotenrechner: löst `(S + w·v) / (W + w) = X` nach `v` auf (S = gewichtete Summe, W = Gewichtssumme,
+  w = Gewicht der nächsten Arbeit, X = Wunschschnitt).
