@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Tauri
+src-tauri/target/
+src-tauri/gen/schemas/
+src-tauri/gen/android/app/build/
+src-tauri/gen/android/.gradle/
+src-tauri/gen/android/build/
+src-tauri/gen/android/local.properties
+src-tauri/gen/android/keystore.properties
+
+# Signing keys - never commit
+*.jks
+*.keystore
+*.pem
+*.p12
+*.pfx
+keystore.properties
+upload-keystore.*
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Test output
+test-results/
+playwright-report/
+playwright/.cache/
+coverage/
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.log
