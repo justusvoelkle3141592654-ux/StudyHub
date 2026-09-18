@@ -121,3 +121,15 @@ Trigger bei jedem Update hochgezählt wird; Row Level Security erlaubt nur Zeile
   Prozent ↔ Note stückweise linear über die Stützstellen 100→1, 85→2, 70→3, 50→4, 30→5, 0→6.
 - Zielnotenrechner: löst `(S + w·v) / (W + w) = X` nach `v` auf (S = gewichtete Summe, W = Gewichtssumme,
   w = Gewicht der nächsten Arbeit, X = Wunschschnitt).
+
+## 7. Dateien und Sicherungen
+
+- Arbeitsordner (Desktop: im Assistenten gewählt, Standard `Dokumente/StudyHub`; Android: privates
+  App-Verzeichnis) mit `files/`, `documents/`, `exports/`, `backups/`.
+- Import: Datei nach `files/<id-prefix>-<name>` kopieren (oder nur verlinken, `is_linked = 1`),
+  SHA-256 in Rust berechnen, Metadaten in `files`. Einträge werden nur soft-gelöscht; Dateien auf der
+  Festplatte bleiben erhalten.
+- Sicherung: einmal täglich beim Start (`settings.backup.lastDate`) Kopie der Datenbank nach
+  `backups/studyhub-JJJJ-MM-TT.db` (nach `PRAGMA wal_checkpoint(TRUNCATE)`); nur die letzten 14 bleiben.
+- Native Pfadbefehle (Kopieren, Löschen, Auflisten, extern Öffnen) akzeptieren nur Pfade unterhalb
+  der beim Start registrierten Wurzeln (Datenbankordner, Arbeitsordner) bzw. des App-Datenverzeichnisses.

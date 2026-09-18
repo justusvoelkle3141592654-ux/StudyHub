@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { MarkdownPreview } from "./MarkdownPreview";
 import { TagInput } from "./TagInput";
 import { exportNoteMarkdown, exportNotePdf } from "./exportNotes";
+import { LinkedFiles } from "./LinkedFiles";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 type Mode = "edit" | "split" | "preview";
@@ -191,6 +192,7 @@ export function NoteEditor({ noteId, folders }: { noteId: string; folders: Folde
             scheduleSave();
           }}
         />
+        <LinkedFiles noteId={noteId} />
         <span className="ml-auto text-muted-foreground" aria-live="polite">
           {dirty ? t("notes.saving") : savedAt ? t("notes.savedAt", { time: formatDateTime(savedAt) }) : ""}
         </span>

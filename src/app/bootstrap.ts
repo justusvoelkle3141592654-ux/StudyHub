@@ -5,6 +5,8 @@ import { log } from "@/lib/logger";
 import { SETTINGS } from "./settingsKeys";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { startReminderScheduler } from "@/features/notifications/scheduler";
+import { registerFileRoots } from "@/features/files/fileService";
+import { runDailyBackupIfNeeded } from "@/features/backup/backupService";
 
 /**
  * Application start: open the database, run migrations, load settings.
@@ -24,6 +26,10 @@ export async function bootstrap(): Promise<void> {
     configureDataContext({ cloudEnabled: mode === "cloud" });
     app.setReady(true);
     startReminderScheduler();
+    if (settings[SETTINGS.setupCompleted] === true) {
+      await registerFileRoots();
+      void runDailyBackupIfNeeded();
+    }
   } catch (e) {
     log.error("bootstrap", "startup failed", e);
     app.setStartupError(e instanceof Error ? e.message : String(e));

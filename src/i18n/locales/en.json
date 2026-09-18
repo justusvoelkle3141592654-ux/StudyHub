@@ -74,7 +74,12 @@
     "language": "Language",
     "german": "German",
     "english": "English",
-    "rerunWizard": "Run setup wizard again"
+    "rerunWizard": "Run setup wizard again",
+    "storage": "Storage and files",
+    "backups": "Backups",
+    "backupsHint": "A copy of the database is written to backups/ once a day at startup; the last 14 are kept.",
+    "backupNow": "Back up now",
+    "backupDone": "Backup written: {{path}}"
   },
   "dashboard": {
     "title": "Home",
@@ -439,7 +444,9 @@
     "sidebar": "Folders and tags",
     "editor": "Editor",
     "pickTitle": "No note selected",
-    "pickHint": "Pick a note on the left or create a new one. Markdown renders live."
+    "pickHint": "Pick a note on the left or create a new one. Markdown renders live.",
+    "linkFiles": "Link files",
+    "noFilesToLink": "No files imported yet."
   },
   "flashcards": {
     "newDeck": "New deck",
@@ -486,5 +493,29 @@
     "nothingDueHint": "All cards are done for today or the daily goal for new cards is reached.",
     "sessionDone": "Session complete",
     "sessionSummary": "{{count}} cards studied, {{correct}} correct on the first try."
+  },
+  "files": {
+    "import": "Import",
+    "imported": "{{count}} file imported",
+    "imported_other": "{{count}} files imported",
+    "allFiles": "All files",
+    "noFolder": "No folder",
+    "searchPlaceholder": "Search file name …",
+    "dropHere": "Drop files here",
+    "emptyTitle": "No files",
+    "emptyHint": "Import files with the button or drop them here. They are copied into the working folder (or only linked, depending on the setting).",
+    "emptyHintMobile": "Import files with the button. On Android you pick files through the system picker; they are copied into the app-private storage.",
+    "androidHint": "Android: access is limited to the app-private storage and explicitly picked files.",
+    "linked": "Linked only",
+    "uploaded": "In the cloud",
+    "uploadPending": "Upload pending",
+    "notUploaded": "Not uploaded",
+    "uploadNow": "Upload to the cloud",
+    "preview": "Preview",
+    "noPreview": "No preview for this file type.",
+    "pdfMobileHint": "Embedded PDF preview is not available on Android – open the file externally.",
+    "openExternal": "Open externally",
+    "unknownType": "Unknown type",
+    "deleteHint": "The entry is removed. Copies in the working folder and linked originals stay on disk."
   }
 }

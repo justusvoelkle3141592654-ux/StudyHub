@@ -221,3 +221,12 @@ pub fn log_file_path(app: AppHandle) -> Result<String, String> {
     let dir = app.path().app_data_dir().map_err(|e| e.to_string())?;
     Ok(dir.join("studyhub.log").to_string_lossy().to_string())
 }
+
+/// Open a file with the default application (desktop). Restricted to the
+/// registered roots so the frontend cannot launch arbitrary paths.
+#[tauri::command]
+pub fn open_path_external(app: AppHandle, roots: State<AllowedRoots>, path: String) -> Result<(), String> {
+    use tauri_plugin_opener::OpenerExt;
+    let p = ensure_allowed(&roots, &app, &path)?;
+    app.opener().open_path(p.to_string_lossy().to_string(), None::<&str>).map_err(|e| e.to_string())
+}

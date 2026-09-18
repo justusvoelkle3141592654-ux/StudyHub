@@ -74,7 +74,12 @@
     "language": "Sprache",
     "german": "Deutsch",
     "english": "Englisch",
-    "rerunWizard": "Einrichtungsassistent erneut starten"
+    "rerunWizard": "Einrichtungsassistent erneut starten",
+    "storage": "Speicher und Dateien",
+    "backups": "Sicherungen",
+    "backupsHint": "Täglich beim Start wird eine Kopie der Datenbank in backups/ abgelegt; die letzten 14 bleiben erhalten.",
+    "backupNow": "Jetzt sichern",
+    "backupDone": "Sicherung geschrieben: {{path}}"
   },
   "dashboard": {
     "title": "Startseite",
@@ -439,7 +444,9 @@
     "sidebar": "Ordner und Tags",
     "editor": "Editor",
     "pickTitle": "Keine Notiz ausgewählt",
-    "pickHint": "Wähle links eine Notiz aus oder lege eine neue an. Markdown wird live gerendert."
+    "pickHint": "Wähle links eine Notiz aus oder lege eine neue an. Markdown wird live gerendert.",
+    "linkFiles": "Dateien verknüpfen",
+    "noFilesToLink": "Noch keine Dateien importiert."
   },
   "flashcards": {
     "newDeck": "Neuer Stapel",
@@ -486,5 +493,29 @@
     "nothingDueHint": "Alle Karten sind für heute erledigt oder das Tagesziel für neue Karten ist erreicht.",
     "sessionDone": "Sitzung abgeschlossen",
     "sessionSummary": "{{count}} Karten gelernt, {{correct}} beim ersten Versuch richtig."
+  },
+  "files": {
+    "import": "Importieren",
+    "imported": "{{count}} Datei importiert",
+    "imported_other": "{{count}} Dateien importiert",
+    "allFiles": "Alle Dateien",
+    "noFolder": "Kein Ordner",
+    "searchPlaceholder": "Dateiname suchen …",
+    "dropHere": "Dateien hier ablegen",
+    "emptyTitle": "Keine Dateien",
+    "emptyHint": "Importiere Dateien über den Knopf oder ziehe sie hierher. Sie werden in den Arbeitsordner kopiert (oder nur verlinkt, je nach Einstellung).",
+    "emptyHintMobile": "Importiere Dateien über den Knopf. Auf Android wählst du Dateien über das System-Dateiauswahl; sie werden in den privaten App-Speicher kopiert.",
+    "androidHint": "Android: Der Zugriff ist auf den privaten App-Speicher und ausdrücklich ausgewählte Dateien beschränkt.",
+    "linked": "Nur verlinkt",
+    "uploaded": "In der Cloud",
+    "uploadPending": "Upload ausstehend",
+    "notUploaded": "Nicht hochgeladen",
+    "uploadNow": "In die Cloud hochladen",
+    "preview": "Vorschau",
+    "noPreview": "Für diesen Dateityp gibt es keine Vorschau.",
+    "pdfMobileHint": "PDF-Vorschau ist auf Android nicht eingebettet möglich – öffne die Datei extern.",
+    "openExternal": "Extern öffnen",
+    "unknownType": "Unbekannter Typ",
+    "deleteHint": "Der Eintrag wird entfernt. Kopien im Arbeitsordner und verlinkte Originale bleiben auf der Festplatte erhalten."
   }
 }

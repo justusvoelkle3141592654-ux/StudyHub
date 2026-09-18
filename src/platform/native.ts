@@ -37,6 +37,7 @@ export const native = {
   writeFile: (path: string, data: Uint8Array) => invoke<void>("fs_write_file", { path, data: Array.from(data) }),
   sha256File: (path: string) => invoke<string>("sha256_file", { path }),
   logFilePath: () => invoke<string>("log_file_path"),
+  openPathExternal: (path: string) => invoke<void>("open_path_external", { path }),
 };
 
 /** Resolve the app data directory (creates it if needed). */

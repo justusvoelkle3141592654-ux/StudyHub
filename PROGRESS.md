@@ -74,6 +74,14 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] Supports the three scales from the wizard, weighting on/off; grades module hidden when "no grades module" was chosen
 - [x] Playwright test: grades + averages + target calculator
 ## Phase 8 – Files and file-system access, backups
+- [x] Files module: folder tree, import via dialog and drag-and-drop (native paths in Tauri, HTML5 files in the browser), subject link, search by name + subject filter
+- [x] Import copies into `<working>/files/` (or links only, per setting), computes SHA-256 in Rust (streamed), stores metadata in `files`
+- [x] Preview for images, PDF (embedded, desktop) and text; "open externally" through a root-restricted Rust command
+- [x] Note ↔ file links in the note editor (`note_files`)
+- [x] Daily backup on start to `<working>/backups/studyhub-YYYY-MM-DD.db` (WAL checkpoint first), keeps the last 14; manual "Back up now" + list in settings
+- [x] Android branch: working folder = app-private directory, imports via the system picker (SAF through the Tauri dialog), UI hint, no embedded PDF preview
+- [x] Browser dev build keeps file contents in IndexedDB so the module is testable; Playwright test for import + preview + note link
+- [~] Cloud upload states are shown (pending / uploaded); the actual upload to Supabase Storage is part of phase 9
 ## Phase 9 – Cloud mode (Supabase)
 ## Phase 10 – Office module
 ## Phase 11 – Science and calculation tools
@@ -93,6 +101,7 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 | D8 | Anki import supports the plain-text export ("Notes in Plain Text", .txt with `#separator` headers), not `.apkg` archives. | `.apkg` is a zip with an SQLite database inside; parsing it in the WebView would need a zip + SQLite reader and adds little value for a first-run import. |
 | D9 | Secrets (API key, later auth tokens) are stored through Rust: `keyring` crate (Windows Credential Manager) on desktop, a JSON file in the app-private directory on Android (no keyring backend exists there; Android isolates and encrypts app-private storage). In the browser dev build they live in `sessionStorage`. | Brief 3.6 / 4 step 12: never store secrets in SQLite or logs. |
 | D10 | Percent → grade conversion uses piecewise linear anchors 100→1, 85→2, 70→3, 50→4, 30→5, 0→6; it is only applied when a grade's scale differs from the configured scale (e.g. after switching scales). | Schools differ in their percent tables; a transparent, documented default is better than a hidden one. |
+| D11 | Deleting a file entry never deletes bytes on disk (copies in `files/` and linked originals stay). | Brief 7 "avoid data loss"; the entry can be restored by sync/restore, the copy is small compared to the risk. |
 | D4 | Versions verified against the registries on 2026-09-18: Vite 8.3, React 18.3.1, TypeScript 5.9.3, Tailwind 4.3, Tauri 2.11 (crates 2.x, npm `@tauri-apps/*` 2.x), Vitest 5.0, Playwright 1.63. | Brief section 7: no invented dependencies. |
 
 ## Open questions for the project owner
