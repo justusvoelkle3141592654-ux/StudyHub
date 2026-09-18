@@ -62,6 +62,12 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] `note_files` link table (migration 0003) for note ↔ file links; UI follows in phase 8 with the files module
 - [x] Playwright test: note creation, live preview, tags, search
 ## Phase 6 – Flashcards with SM-2
+- [x] `sm2.ts`: pure SM-2 implementation (ease factor, interval, repetitions, due date), intensity modifier + starting ease; unit tests for first review, lapse, ease floor, very long intervals, clamped quality
+- [x] Decks per subject, cards with Markdown front/back and embedded images (data URLs, ≤ 2 MB)
+- [x] Study session with daily new-card limit (`flashcard_reviews.was_new`, migration 0004), reveal + 0–5 grading, keyboard shortcuts, lapses re-queued within the session
+- [x] Statistics: cards per day and hit rate over the last 14 days (inline SVG chart), per deck and overall
+- [x] Dashboard tile shows the number of cards due today
+- [x] Playwright test: deck + cards + full study session
 ## Phase 7 – Grades
 ## Phase 8 – Files and file-system access, backups
 ## Phase 9 – Cloud mode (Supabase)

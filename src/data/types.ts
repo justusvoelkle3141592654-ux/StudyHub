@@ -103,6 +103,7 @@ export interface FlashcardReview extends SyncFields {
   deck_id: string;
   reviewed_on: string; // YYYY-MM-DD
   quality: number; // 0-5
+  was_new: number; // 1 when this was the card's first review
 }
 
 export type GradeScale = "de_1_6" | "points_0_15" | "percent";

@@ -53,22 +53,31 @@ export class FlashcardRepository extends BaseRepository<Flashcard, "ease_factor"
   }
 }
 
-export class FlashcardReviewRepository extends BaseRepository<FlashcardReview> {
+export class FlashcardReviewRepository extends BaseRepository<FlashcardReview, "was_new"> {
   constructor(db: DbAdapter) {
-    super(db, "flashcard_reviews", ["card_id", "deck_id", "reviewed_on", "quality"]);
+    super(db, "flashcard_reviews", ["card_id", "deck_id", "reviewed_on", "quality", "was_new"]);
   }
 
   countOn(day: string, deckId?: string) {
     return deckId ? this.count("reviewed_on = ? AND deck_id = ?", [day, deckId]) : this.count("reviewed_on = ?", [day]);
   }
 
+  /** Number of cards learned for the first time on the given day. */
+  countNewOn(day: string) {
+    return this.count("reviewed_on = ? AND was_new = 1", [day]);
+  }
+
+  protected override applyDefaults(data: Parameters<FlashcardReviewRepository["insert"]>[0]): NewEntity<FlashcardReview> {
+    return { was_new: 0, ...data };
+  }
+
   /** Per-day statistics: reviewed cards and hit rate (quality >= 3). */
-  async dailyStats(days = 30): Promise<Array<{ day: string; reviewed: number; correct: number }>> {
+  async dailyStats(days = 30, deckId?: string): Promise<Array<{ day: string; reviewed: number; correct: number }>> {
     const rows = await this.db.select<{ day: string; reviewed: number; correct: number }>(
       `SELECT reviewed_on AS day, COUNT(*) AS reviewed, SUM(CASE WHEN quality >= 3 THEN 1 ELSE 0 END) AS correct
-       FROM flashcard_reviews WHERE deleted_at IS NULL
+       FROM flashcard_reviews WHERE deleted_at IS NULL${deckId ? " AND deck_id = ?" : ""}
        GROUP BY reviewed_on ORDER BY reviewed_on DESC LIMIT ?`,
-      [days],
+      deckId ? [deckId, days] : [days],
     );
     return rows.map((r) => ({ day: r.day, reviewed: Number(r.reviewed), correct: Number(r.correct) })).reverse();
   }

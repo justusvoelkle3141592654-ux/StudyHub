@@ -8,6 +8,9 @@ import { TimetablePage } from "@/features/timetable/TimetablePage";
 import { TasksPage } from "@/features/tasks/TasksPage";
 import { ExamsPage } from "@/features/exams/ExamsPage";
 import { NotesPage } from "@/features/notes/NotesPage";
+import { FlashcardsPage } from "@/features/flashcards/FlashcardsPage";
+import { DeckPage } from "@/features/flashcards/DeckPage";
+import { StudySession } from "@/features/flashcards/StudySession";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { AppShell } from "@/app/AppShell";
@@ -39,7 +42,10 @@ const router = createHashRouter([
       { path: "subjects", element: <SubjectsPage /> },
       { path: "notes", element: <NotesPage /> },
       { path: "notes/:id", element: <NotesPage /> },
-      { path: "flashcards", element: <PlaceholderPage titleKey="nav.flashcards" /> },
+      { path: "flashcards", element: <FlashcardsPage /> },
+      { path: "flashcards/study", element: <StudySession /> },
+      { path: "flashcards/:deckId", element: <DeckPage /> },
+      { path: "flashcards/:deckId/study", element: <StudySession /> },
       { path: "grades", element: <PlaceholderPage titleKey="nav.grades" /> },
       { path: "files", element: <PlaceholderPage titleKey="nav.files" /> },
       { path: "documents", element: <PlaceholderPage titleKey="nav.documents" /> },
