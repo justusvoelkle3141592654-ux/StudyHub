@@ -24,3 +24,11 @@ export async function completeSetup(page: Page, options: { subjects?: string[] }
   await page.getByTestId("setup-finish").click();
   await page.waitForURL(/#\/$/);
 }
+
+/**
+ * The browser dev build persists the SQLite image to IndexedDB with a short
+ * debounce; wait for it before reloading. (Inside Tauri writes hit SQLite directly.)
+ */
+export async function waitForPersistence(page: Page) {
+  await page.waitForTimeout(500);
+}

@@ -141,3 +141,17 @@
 .markdown-body th { background: var(--muted); font-weight: 600; }
 .markdown-body hr { border: 0; border-top: 1px solid var(--border); margin: 1em 0; }
 .markdown-body img { max-width: 100%; border-radius: 6px; }
+
+/* Office text editor (TipTap) */
+.ProseMirror-editor { counter-reset: footnote; }
+.ProseMirror-editor sup.footnote-ref { cursor: pointer; color: var(--primary); font-weight: 600; padding: 0 1px; }
+.ProseMirror-editor sup.footnote-ref::after { counter-increment: footnote; content: counter(footnote); }
+.ProseMirror-editor sup.footnote-ref.ProseMirror-selectednode { outline: 2px solid var(--ring); border-radius: 2px; }
+.ProseMirror-editor .page-break { border-top: 2px dashed var(--border); margin: 1.5em 0; position: relative; height: 0; }
+.ProseMirror-editor .page-break::after { content: attr(data-label); position: absolute; top: -0.7em; left: 50%; transform: translateX(-50%); background: var(--background); padding: 0 0.5em; font-size: 0.7rem; color: var(--muted-foreground); }
+.ProseMirror-editor .page-break.ProseMirror-selectednode { border-color: var(--ring); }
+.ProseMirror-editor img.ProseMirror-selectednode { outline: 2px solid var(--ring); }
+.ProseMirror-editor table { table-layout: fixed; }
+.ProseMirror-editor td, .ProseMirror-editor th { min-width: 3em; vertical-align: top; position: relative; }
+.ProseMirror-editor .selectedCell::after { content: ""; position: absolute; inset: 0; background: color-mix(in oklab, var(--primary) 15%, transparent); pointer-events: none; }
+.ProseMirror-editor p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: var(--muted-foreground); float: left; pointer-events: none; height: 0; }

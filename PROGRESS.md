@@ -93,6 +93,13 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [~] Not exercised against a live Supabase project in this environment (no network/credentials); the remote adapter follows the supabase-js 2.x API (`upsert().select().single()`, `gt('synced_at')`, storage `upload`/`download`/`createBucket`)
 - [x] README: Supabase setup, env vars, sync description; `.env.example`
 ## Phase 10 – Office module
+- [x] Documents list with folder tree, create text document / presentation, rename, delete, title editing
+- [x] Text editor (TipTap 3): headings, bold/italic/underline/strike, lists, quotes, code, tables (insert, rows/columns, delete), images (data URLs), footnotes (custom inline node, CSS-numbered), page breaks (custom block node), undo/redo, word count, autosave
+- [x] Text export: PDF (`pdf-lib`, plain A4 with real page breaks and footnotes), DOCX (`docx`: headings, lists with numbering, tables, images, footnotes, page breaks), Markdown (GFM with footnotes)
+- [x] Presentation editor: slide list with thumbnails, layouts (title, title+content, two columns, image only, blank), text boxes, images, shapes (rect/ellipse/line), drag to move / corner resize, properties panel, background colour, speaker notes, slide reorder/duplicate/delete
+- [x] Presentation mode: fullscreen, keyboard (arrows/space/Escape), click to advance
+- [x] Presentation export: PDF (one page per slide, `pdf-lib`) and PPTX (`pptxgenjs` with notes)
+- [x] Unit tests: document flattening/Markdown, DOCX + PDF generation, presentation model + PDF/PPTX; Playwright tests for both editors
 ## Phase 11 – Science and calculation tools
 ## Phase 12 – AI features (optional)
 ## Phase 13 – Tests, polish, Windows and Android builds

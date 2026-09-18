@@ -13,6 +13,7 @@ import { DeckPage } from "@/features/flashcards/DeckPage";
 import { StudySession } from "@/features/flashcards/StudySession";
 import { GradesPage, SubjectGradesPage } from "@/features/grades/GradesPage";
 import { FilesPage } from "@/features/files/FilesPage";
+import { DocumentPage, DocumentsPage } from "@/features/documents/DocumentsPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { AppShell } from "@/app/AppShell";
@@ -51,7 +52,8 @@ const router = createHashRouter([
       { path: "grades", element: <GradesPage /> },
       { path: "grades/:subjectId", element: <SubjectGradesPage /> },
       { path: "files", element: <FilesPage /> },
-      { path: "documents", element: <PlaceholderPage titleKey="nav.documents" /> },
+      { path: "documents", element: <DocumentsPage /> },
+      { path: "documents/:id", element: <DocumentPage /> },
       { path: "tools", element: <PlaceholderPage titleKey="nav.tools" /> },
       { path: "settings", element: <SettingsPage /> },
         ],
