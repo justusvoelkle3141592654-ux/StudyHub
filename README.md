@@ -74,10 +74,10 @@ Unsigned/debug-signed APKs land in `src-tauri/gen/android/app/build/outputs/apk/
    keytool -genkey -v -keystore upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias studyhub
    ```
 
-2. Create `src-tauri/gen/android/keystore.properties` (git-ignored):
+2. Copy the keystore into `src-tauri/gen/android/` and create `src-tauri/gen/android/keystore.properties` there (both git-ignored; `storeFile` is relative to that folder):
 
    ```
-   storeFile=../../../../upload-keystore.jks
+   storeFile=upload-keystore.jks
    storePassword=<password>
    keyAlias=studyhub
    keyPassword=<password>

@@ -29,8 +29,9 @@ if (gradle.includes("keystore.properties")) {
   process.exit(0);
 }
 
-// 1. Imports at the top of the file.
-gradle = `import java.util.Properties\nimport java.io.FileInputStream\n\n${gradle}`;
+// 1. Imports at the top of the file (the generated file already imports Properties).
+if (!gradle.includes("import java.io.FileInputStream")) gradle = `import java.io.FileInputStream\n${gradle}`;
+if (!gradle.includes("import java.util.Properties")) gradle = `import java.util.Properties\n${gradle}`;
 
 // 2. Signing config inside `android { ... }` (inserted right after the opening line).
 gradle = gradle.replace(
@@ -45,7 +46,7 @@ gradle = gradle.replace(
         create("release") {
             keyAlias = keystoreProperties["keyAlias"] as String
             keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"] as String)
+            storeFile = rootProject.file(keystoreProperties["storeFile"] as String)
             storePassword = keystoreProperties["storePassword"] as String
         }
     }
