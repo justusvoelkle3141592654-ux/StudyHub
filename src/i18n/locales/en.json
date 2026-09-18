@@ -668,5 +668,46 @@
       "image": "Insert image",
       "text": "Text"
     }
+  },
+  "tools": {
+    "units": {
+      "title": "Units",
+      "category": "Quantity",
+      "value": "Value",
+      "from": "From",
+      "to": "To",
+      "swap": "Swap units",
+      "result": "Result"
+    },
+    "formulas": {
+      "title": "Formulas",
+      "search": "Search formula …",
+      "categories": "Categories"
+    },
+    "calc": {
+      "title": "Calculator",
+      "placeholder": "e.g. 2^10 + sqrt(16)",
+      "expression": "Expression",
+      "angle": "Angle",
+      "degrees": "Degrees",
+      "radians": "Radians",
+      "keypad": "Keypad",
+      "hint": "Enter evaluates. Supports functions like sin, cos, sqrt, log10, ln (log), factorial (!), powers (^), variables (x = 5) and ans for the last result.",
+      "history": "History",
+      "clearHistory": "Clear history",
+      "reuse": "Reuse result"
+    },
+    "elements": {
+      "title": "Periodic table",
+      "search": "Search element (symbol, name, number)",
+      "number": "Atomic number",
+      "mass": "Atomic mass",
+      "isotopeHint": "Mass number of the most stable isotope (no standard atomic weight)",
+      "group": "Group",
+      "period": "Period",
+      "block": "Block",
+      "configuration": "Electron configuration",
+      "nameEn": "German name"
+    }
   }
 }

@@ -668,5 +668,46 @@
       "image": "Bild einfügen",
       "text": "Text"
     }
+  },
+  "tools": {
+    "units": {
+      "title": "Einheiten",
+      "category": "Größe",
+      "value": "Wert",
+      "from": "Von",
+      "to": "Nach",
+      "swap": "Einheiten tauschen",
+      "result": "Ergebnis"
+    },
+    "formulas": {
+      "title": "Formelsammlung",
+      "search": "Formel suchen …",
+      "categories": "Kategorien"
+    },
+    "calc": {
+      "title": "Taschenrechner",
+      "placeholder": "z. B. 2^10 + sqrt(16)",
+      "expression": "Ausdruck",
+      "angle": "Winkel",
+      "degrees": "Grad",
+      "radians": "Bogenmaß",
+      "keypad": "Tastenfeld",
+      "hint": "Enter berechnet. Unterstützt werden Funktionen wie sin, cos, sqrt, log10, ln (log), Fakultät (!), Potenzen (^), Variablen (x = 5) und ans für das letzte Ergebnis.",
+      "history": "Verlauf",
+      "clearHistory": "Verlauf löschen",
+      "reuse": "Ergebnis übernehmen"
+    },
+    "elements": {
+      "title": "Periodensystem",
+      "search": "Element suchen (Symbol, Name, Ordnungszahl)",
+      "number": "Ordnungszahl",
+      "mass": "Atommasse",
+      "isotopeHint": "Massenzahl des stabilsten Isotops (kein Standardatomgewicht)",
+      "group": "Gruppe",
+      "period": "Periode",
+      "block": "Block",
+      "configuration": "Elektronenkonfiguration",
+      "nameEn": "Englischer Name"
+    }
   }
 }

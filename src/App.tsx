@@ -14,8 +14,8 @@ import { StudySession } from "@/features/flashcards/StudySession";
 import { GradesPage, SubjectGradesPage } from "@/features/grades/GradesPage";
 import { FilesPage } from "@/features/files/FilesPage";
 import { DocumentPage, DocumentsPage } from "@/features/documents/DocumentsPage";
+import { ToolsPage } from "@/features/tools/ToolsPage";
 import { SettingsPage } from "@/pages/SettingsPage";
-import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { AppShell } from "@/app/AppShell";
 import { SetupWizard } from "@/features/setup/SetupWizard";
 import { useAppStore } from "@/stores/appStore";
@@ -54,7 +54,8 @@ const router = createHashRouter([
       { path: "files", element: <FilesPage /> },
       { path: "documents", element: <DocumentsPage /> },
       { path: "documents/:id", element: <DocumentPage /> },
-      { path: "tools", element: <PlaceholderPage titleKey="nav.tools" /> },
+      { path: "tools", element: <ToolsPage /> },
+      { path: "tools/:tool", element: <ToolsPage /> },
       { path: "settings", element: <SettingsPage /> },
         ],
       },

@@ -101,6 +101,11 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] Presentation export: PDF (one page per slide, `pdf-lib`) and PPTX (`pptxgenjs` with notes)
 - [x] Unit tests: document flattening/Markdown, DOCX + PDF generation, presentation model + PDF/PPTX; Playwright tests for both editors
 ## Phase 11 – Science and calculation tools
+- [x] Unit converter: 17 categories (length, mass, time, temperature, area, volume, speed, force, pressure, energy, power, data, angle, frequency, current, voltage, resistance, capacitance) on top of mathjs; five units mathjs lacks are defined from exact definitions (nmi, knot, light year, cal) or CODATA (u)
+- [x] Formula collection: 70 textbook formulas in 11 categories with KaTeX rendering, symbol legends (de/en), search + category filter; every entry is render-tested
+- [x] Scientific calculator: mathjs evaluator (imports/unit definitions disabled), degree/radian mode, `ans`, variables, keypad, persisted history (last 100)
+- [x] Periodic table: all 118 elements (number, symbol, de/en names, IUPAC abridged atomic weights or mass numbers, group, period, block, category, electron configuration from the Madelung rule + known exceptions); classic 18-column layout with f-block, search, detail dialog. Properties not reliably known (melting points, electronegativity …) are intentionally left out
+- [x] Unit tests (conversions, calculator, KaTeX rendering of all formulas, element data consistency incl. electron counts) and a Playwright test
 ## Phase 12 – AI features (optional)
 ## Phase 13 – Tests, polish, Windows and Android builds
 
