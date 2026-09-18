@@ -81,7 +81,7 @@ export class SqlJsAdapter implements DbAdapter {
     this.persistTimer = setTimeout(() => {
       this.persistTimer = null;
       void this.persist?.(this.db.export());
-    }, 500);
+    }, 150);
   }
 }
 

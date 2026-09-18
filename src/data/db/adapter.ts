@@ -22,6 +22,8 @@ export interface DbAdapter {
   select<T = Record<string, SqlValue>>(sql: string, params?: SqlValue[]): Promise<T[]>;
   /** Run several statements in order inside a single transaction. */
   executeBatch(statements: Array<{ sql: string; params?: SqlValue[] }>): Promise<void>;
+  /** Make sure pending writes reached durable storage (no-op for native SQLite). */
+  flush(): Promise<void>;
   close(): Promise<void>;
 }
 

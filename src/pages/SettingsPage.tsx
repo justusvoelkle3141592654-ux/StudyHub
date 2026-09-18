@@ -1,4 +1,7 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { Wand2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -17,9 +20,17 @@ function SettingRow({ label, htmlFor, children }: { label: string; htmlFor: stri
 export function SettingsPage() {
   const { t } = useTranslation();
   const ui = useUiStore();
+  const navigate = useNavigate();
   return (
     <div className="mx-auto max-w-2xl">
-      <PageHeader title={t("settings.title")} />
+      <PageHeader
+        title={t("settings.title")}
+        actions={
+          <Button variant="outline" onClick={() => navigate("/setup")}>
+            <Wand2 /> {t("settings.rerunWizard")}
+          </Button>
+        }
+      />
       <Card>
         <CardHeader>
           <CardTitle>{t("settings.appearance")}</CardTitle>

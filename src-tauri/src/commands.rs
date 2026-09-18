@@ -101,9 +101,11 @@ pub struct DirEntryInfo {
     pub modified_ms: Option<u64>,
 }
 
+/// Read-only directory listing. Not restricted to the roots because the
+/// source of an import is a folder the user picked in a dialog.
 #[tauri::command]
-pub fn fs_list_dir(app: AppHandle, roots: State<AllowedRoots>, path: String) -> Result<Vec<DirEntryInfo>, String> {
-    let p = ensure_allowed(&roots, &app, &path)?;
+pub fn fs_list_dir(path: String) -> Result<Vec<DirEntryInfo>, String> {
+    let p = PathBuf::from(&path);
     let mut out = Vec::new();
     if !p.is_dir() {
         return Ok(out);

@@ -72,7 +72,8 @@
     "densityCompact": "Compact",
     "language": "Language",
     "german": "German",
-    "english": "English"
+    "english": "English",
+    "rerunWizard": "Run setup wizard again"
   },
   "dashboard": {
     "title": "Home",
@@ -82,5 +83,175 @@
     "errorTitle": "StudyHub could not start",
     "errorHint": "The local database could not be opened or upgraded. A backup was written before the upgrade. Details are in the log file in the app data directory.",
     "retry": "Try again"
+  },
+  "color": {
+    "choose": "Choose color",
+    "custom": "Custom color"
+  },
+  "cloud": {
+    "notYetAvailable": "Cloud sign-in becomes available in a later phase."
+  },
+  "grades": {
+    "scale": {
+      "de_1_6": "Grades 1–6",
+      "points_0_15": "Points 0–15",
+      "percent": "Percent"
+    }
+  },
+  "setup": {
+    "title": "Setup",
+    "stepOf": "Step {{current}} of {{total}}",
+    "progress": "Setup progress",
+    "finish": "Finish setup",
+    "done": "Setup complete. Good luck!",
+    "failed": "The setup could not be saved",
+    "desktopOnlyHint": "Choosing folders is only available in the desktop app. The browser and Android use the default locations.",
+    "welcome": {
+      "title": "Welcome to StudyHub",
+      "description": "A few steps set the app up for you. Every step can be skipped and changed later in the settings.",
+      "features": "Timetable, tasks, exams, grades and flashcards for school and university – notes, documents, files and calculation tools for science and work. Everything works offline."
+    },
+    "profile": {
+      "title": "Usage profile",
+      "description": "The profile decides which modules appear first on the home page. All modules stay reachable.",
+      "school": "School",
+      "schoolHint": "Timetable, homework, grades and flashcards up front.",
+      "university": "University",
+      "universityHint": "Lectures, exams, notes and flashcards.",
+      "work": "Work and science",
+      "workHint": "Notes, documents, files and formula tools up front.",
+      "mixed": "Mixed",
+      "mixedHint": "All modules equally."
+    },
+    "mode": {
+      "title": "Storage mode",
+      "description": "Where should your data live? You can switch later in the settings.",
+      "local": "Offline only",
+      "localHint": "All data stays exclusively on this device and never leaves it. If the device is lost or breaks, the data is gone unless you keep your own backups. No account needed.",
+      "cloud": "With cloud synchronisation",
+      "cloudHint": "The app still works locally and syncs with your account in the background so several devices share the same state. Everything stays usable without internet. An account with e-mail and password is required.",
+      "cloudUnavailable": "No cloud service is configured in this build. The mode can be enabled later in the settings."
+    },
+    "account": {
+      "title": "Account",
+      "description": "Sign in or create an account so your data can be synchronised with other devices.",
+      "skippedOffline": "No account is needed in offline mode. This step is skipped – you can switch to cloud synchronisation in the settings at any time."
+    },
+    "database": {
+      "title": "Database location",
+      "description": "This file holds all your data. The default path is right for most users.",
+      "current": "Current path",
+      "choose": "Choose another folder",
+      "useDefault": "Use default path",
+      "browserDefault": "Browser storage (development mode)",
+      "networkHint": "A network drive works, but the app should not be open there from several devices at once."
+    },
+    "workingFolder": {
+      "title": "Working folder for files",
+      "description": "StudyHub stores imported files, documents, exports and backups in this folder.",
+      "current": "Folder",
+      "choose": "Choose folder",
+      "sub": {
+        "files": "imported files",
+        "documents": "office documents",
+        "exports": "exports (PDF, DOCX …)",
+        "backups": "daily backups"
+      },
+      "linkInstead": "Link files instead of copying",
+      "linkInsteadHint": "Imported files stay where they are; StudyHub only remembers the path."
+    },
+    "subjects": {
+      "title": "Create {{what}}",
+      "subjects": "subjects",
+      "projects": "projects",
+      "description": "You can extend this list at any time.",
+      "placeholder": "Enter a name …",
+      "suggestions": "Suggestions"
+    },
+    "timetable": {
+      "title": "Timetable skeleton",
+      "description": "The grid for your timetable. Individual lessons are entered later in the timetable module.",
+      "days": "School week",
+      "days5": "5 days (Mon–Fri)",
+      "days6": "6 days (Mon–Sat)",
+      "lessonsPerDay": "Lessons per day",
+      "abWeeks": "A/B weeks",
+      "abWeeksHint": "Alternating timetable in even and odd weeks",
+      "times": "Default lesson times",
+      "start": "Start lesson",
+      "end": "End lesson"
+    },
+    "grades": {
+      "title": "Grading system",
+      "description": "Which scale does your school or university use?",
+      "de16Hint": "1 (very good) to 6 (fail), decimals allowed",
+      "pointsHint": "Upper school: 0 to 15 points",
+      "percentHint": "0 to 100 percent",
+      "none": "No grades module",
+      "noneHint": "The grades module is hidden.",
+      "weighted": "Weight grades",
+      "weightedHint": "Each grade gets a weight, e.g. exam 2, quiz 1"
+    },
+    "flashcards": {
+      "title": "Flashcards",
+      "description": "How many new cards do you want to learn per day and how intensively review?",
+      "dailyNew": "New cards per day",
+      "dailyNewHint": "0 = no daily goal",
+      "perDay": "new cards/day",
+      "intensity": "Review intensity",
+      "relaxed": "Relaxed",
+      "relaxedHint": "Longer gaps between reviews",
+      "normal": "Normal",
+      "normalHint": "Default parameters of the SM-2 algorithm",
+      "intensive": "Intensive",
+      "intensiveHint": "Shorter gaps, more reviews"
+    },
+    "notifications": {
+      "title": "Reminders and notifications",
+      "description": "StudyHub can remind you of tasks, exams and study sessions. The system permission is only requested once you agree here.",
+      "allow": "Allow notifications",
+      "denied": "Permission was not granted. You can allow it later in the system settings.",
+      "lead": "Lead time before tasks and exams",
+      "minutes": "{{n}} minutes",
+      "hours": "{{n}} hours",
+      "days": "{{n}} days",
+      "daily": "Daily study reminder",
+      "dailyTime": "Time"
+    },
+    "ai": {
+      "title": "AI features",
+      "description": "Optional: summarise notes, generate flashcards and practice questions, suggest outlines.",
+      "off": "Off",
+      "offHint": "Default. No content is sent to an AI provider.",
+      "on": "With my own Anthropic API key",
+      "onHint": "You need your own Anthropic API key; usage is billed to your Anthropic account.",
+      "keyLabel": "Anthropic API key",
+      "privacy": "With AI enabled, the affected content (e.g. the text of a note) is sent to Anthropic. Before each call you see what will be sent. The key is stored locally in the operating system's credential store, never in the database or the log."
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "The preview is applied immediately."
+    },
+    "import": {
+      "title": "Data import",
+      "description": "Optional: bring existing data along. The import runs when the setup is finished.",
+      "grades": "Grades",
+      "tasks": "Tasks",
+      "cards": "Flashcards",
+      "notes": "Notes",
+      "csv": "CSV file",
+      "anki": "Anki text export",
+      "markdownFiles": "Markdown files",
+      "markdownFolder": "Whole folder",
+      "count": "{{count}} entries",
+      "skippedRows": "{{count}} rows skipped",
+      "formats": "CSV: columns subject, title, grade/value, weight, date or title, subject, due, priority. Anki: export “Notes in Plain Text” (.txt), no .apkg files."
+    },
+    "summary": {
+      "title": "Summary",
+      "description": "Review your settings. Only “Finish setup” creates the database, folders and settings.",
+      "default": "Default",
+      "timetable": "{{days}} days · {{lessons}} lessons · A/B weeks: {{ab}}"
+    }
   }
 }

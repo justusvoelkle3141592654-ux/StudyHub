@@ -27,6 +27,11 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 sha2 = "0.10"
 
+[target.'cfg(not(target_os = "android"))'.dependencies]
+# OS credential store (Windows Credential Manager, macOS Keychain). On Linux without a
+# secret-service feature this falls back to the crate's in-memory mock store (dev only).
+keyring = { version = "3", features = ["windows-native", "apple-native"] }
+
 [profile.release]
 codegen-units = 1
 lto = true

@@ -24,9 +24,6 @@ export default defineConfig({
     hmr: host ? { protocol: "ws", host, port: 1421 } : undefined,
     watch: { ignored: ["**/src-tauri/**"] },
   },
-  optimizeDeps: {
-    exclude: ["sql.js"],
-  },
   build: {
     // Tauri 2 targets: WebView2 on Windows, Chromium WebView on Android.
     target: ["es2022", "chrome105", "safari15"],

@@ -72,7 +72,8 @@
     "densityCompact": "Kompakt",
     "language": "Sprache",
     "german": "Deutsch",
-    "english": "Englisch"
+    "english": "Englisch",
+    "rerunWizard": "Einrichtungsassistent erneut starten"
   },
   "dashboard": {
     "title": "Startseite",
@@ -82,5 +83,175 @@
     "errorTitle": "StudyHub konnte nicht gestartet werden",
     "errorHint": "Die lokale Datenbank konnte nicht geöffnet oder aktualisiert werden. Eine Sicherung wurde vor der Aktualisierung angelegt. Details stehen in der Logdatei im App-Datenverzeichnis.",
     "retry": "Erneut versuchen"
+  },
+  "color": {
+    "choose": "Farbe wählen",
+    "custom": "Eigene Farbe"
+  },
+  "cloud": {
+    "notYetAvailable": "Die Cloud-Anmeldung wird in einer späteren Phase verfügbar."
+  },
+  "grades": {
+    "scale": {
+      "de_1_6": "Noten 1–6",
+      "points_0_15": "Punkte 0–15",
+      "percent": "Prozent"
+    }
+  },
+  "setup": {
+    "title": "Einrichtung",
+    "stepOf": "Schritt {{current}} von {{total}}",
+    "progress": "Fortschritt der Einrichtung",
+    "finish": "Einrichtung abschließen",
+    "done": "Einrichtung abgeschlossen. Viel Erfolg!",
+    "failed": "Die Einrichtung konnte nicht gespeichert werden",
+    "desktopOnlyHint": "Die Ordnerauswahl ist nur in der Desktop-App verfügbar. Im Browser und auf Android werden die Standardpfade verwendet.",
+    "welcome": {
+      "title": "Willkommen bei StudyHub",
+      "description": "In wenigen Schritten richten wir die App für dich ein. Du kannst jeden Schritt überspringen und später in den Einstellungen ändern.",
+      "features": "Stundenplan, Aufgaben, Prüfungen, Noten und Lernkarten für Schule und Studium – Notizen, Dokumente, Dateien und Rechenwerkzeuge für Wissenschaft und Beruf. Alles funktioniert offline."
+    },
+    "profile": {
+      "title": "Nutzungsprofil",
+      "description": "Das Profil bestimmt, welche Module auf der Startseite zuerst erscheinen. Alle Module bleiben erreichbar.",
+      "school": "Schule",
+      "schoolHint": "Stundenplan, Hausaufgaben, Noten und Lernkarten im Vordergrund.",
+      "university": "Studium",
+      "universityHint": "Vorlesungen, Prüfungen, Notizen und Lernkarten.",
+      "work": "Beruf und Wissenschaft",
+      "workHint": "Notizen, Dokumente, Dateien und Formel-Werkzeuge im Vordergrund.",
+      "mixed": "Gemischt",
+      "mixedHint": "Alle Module gleichberechtigt."
+    },
+    "mode": {
+      "title": "Betriebsmodus",
+      "description": "Wo sollen deine Daten liegen? Die Umstellung ist später jederzeit in den Einstellungen möglich.",
+      "local": "Nur offline",
+      "localHint": "Alle Daten liegen ausschließlich auf diesem Gerät und verlassen es nie. Geht das Gerät verloren oder kaputt, sind die Daten ohne eigene Sicherung verloren. Kein Konto nötig.",
+      "cloud": "Mit Cloud-Synchronisation",
+      "cloudHint": "Die App arbeitet weiterhin lokal und gleicht im Hintergrund mit deinem Konto ab, sodass mehrere Geräte denselben Stand haben. Ohne Internet bleibt alles benutzbar. Ein Konto mit E-Mail und Passwort ist nötig.",
+      "cloudUnavailable": "In dieser Version ist kein Cloud-Dienst konfiguriert. Der Modus lässt sich später in den Einstellungen aktivieren."
+    },
+    "account": {
+      "title": "Konto",
+      "description": "Melde dich an oder lege ein Konto an, damit deine Daten mit anderen Geräten abgeglichen werden können.",
+      "skippedOffline": "Im Offline-Modus ist kein Konto nötig. Dieser Schritt wird übersprungen – du kannst später jederzeit in den Einstellungen auf Cloud-Synchronisation umstellen."
+    },
+    "database": {
+      "title": "Speicherort der Datenbank",
+      "description": "Hier liegt die Datei mit allen deinen Daten. Der Standardpfad ist für die meisten Nutzer richtig.",
+      "current": "Aktueller Pfad",
+      "choose": "Anderen Ordner wählen",
+      "useDefault": "Standardpfad verwenden",
+      "browserDefault": "Browser-Speicher (Entwicklungsmodus)",
+      "networkHint": "Ein Netzlaufwerk ist möglich, aber die App sollte dort nicht gleichzeitig von mehreren Geräten geöffnet sein."
+    },
+    "workingFolder": {
+      "title": "Arbeitsordner für Dateien",
+      "description": "In diesem Ordner legt StudyHub importierte Dateien, Dokumente, Exporte und Sicherungen ab.",
+      "current": "Ordner",
+      "choose": "Ordner wählen",
+      "sub": {
+        "files": "importierte Dateien",
+        "documents": "Office-Dokumente",
+        "exports": "Exporte (PDF, DOCX …)",
+        "backups": "tägliche Sicherungen"
+      },
+      "linkInstead": "Dateien nur verlinken statt kopieren",
+      "linkInsteadHint": "Importierte Dateien bleiben an ihrem Ursprungsort; StudyHub merkt sich nur den Pfad."
+    },
+    "subjects": {
+      "title": "{{what}} anlegen",
+      "subjects": "Fächer",
+      "projects": "Projekte",
+      "description": "Du kannst diese Liste später jederzeit erweitern.",
+      "placeholder": "Name eingeben …",
+      "suggestions": "Vorschläge"
+    },
+    "timetable": {
+      "title": "Stundenplan-Grundgerüst",
+      "description": "Das Raster für deinen Stundenplan. Die einzelnen Stunden trägst du später im Modul Stundenplan ein.",
+      "days": "Schulwoche",
+      "days5": "5 Tage (Mo–Fr)",
+      "days6": "6 Tage (Mo–Sa)",
+      "lessonsPerDay": "Stunden pro Tag",
+      "abWeeks": "A/B-Wochen",
+      "abWeeksHint": "Wechselnder Stundenplan in geraden und ungeraden Wochen",
+      "times": "Standard-Stundenzeiten",
+      "start": "Beginn Stunde",
+      "end": "Ende Stunde"
+    },
+    "grades": {
+      "title": "Notensystem",
+      "description": "Welche Skala verwendet deine Schule oder Hochschule?",
+      "de16Hint": "1 (sehr gut) bis 6 (ungenügend), Dezimalstellen erlaubt",
+      "pointsHint": "Oberstufe: 0 bis 15 Punkte",
+      "percentHint": "0 bis 100 Prozent",
+      "none": "Kein Notenmodul",
+      "noneHint": "Das Modul Noten wird ausgeblendet.",
+      "weighted": "Noten gewichten",
+      "weightedHint": "Jede Note bekommt ein Gewicht, z. B. Klausur 2, Test 1"
+    },
+    "flashcards": {
+      "title": "Lernkarten",
+      "description": "Wie viele neue Karten möchtest du täglich lernen und wie intensiv wiederholen?",
+      "dailyNew": "Neue Karten pro Tag",
+      "dailyNewHint": "0 = kein Tagesziel",
+      "perDay": "neue Karten/Tag",
+      "intensity": "Wiederholungsintensität",
+      "relaxed": "Locker",
+      "relaxedHint": "Längere Abstände zwischen Wiederholungen",
+      "normal": "Normal",
+      "normalHint": "Standardparameter des SM-2-Algorithmus",
+      "intensive": "Intensiv",
+      "intensiveHint": "Kürzere Abstände, mehr Wiederholungen"
+    },
+    "notifications": {
+      "title": "Erinnerungen und Benachrichtigungen",
+      "description": "StudyHub kann dich an Aufgaben, Prüfungen und ans Lernen erinnern. Die Systemberechtigung wird erst angefragt, wenn du hier zustimmst.",
+      "allow": "Benachrichtigungen erlauben",
+      "denied": "Die Berechtigung wurde nicht erteilt. Du kannst sie in den Systemeinstellungen nachträglich erlauben.",
+      "lead": "Vorlaufzeit vor Aufgaben und Prüfungen",
+      "minutes": "{{n}} Minuten",
+      "hours": "{{n}} Stunden",
+      "days": "{{n}} Tage",
+      "daily": "Tägliche Lernerinnerung",
+      "dailyTime": "Uhrzeit"
+    },
+    "ai": {
+      "title": "KI-Funktionen",
+      "description": "Optional: Notizen zusammenfassen, Lernkarten und Übungsfragen erzeugen, Gliederungen vorschlagen.",
+      "off": "Aus",
+      "offHint": "Standard. Es werden keine Inhalte an einen KI-Anbieter gesendet.",
+      "on": "Mit eigenem Anthropic-API-Schlüssel",
+      "onHint": "Du brauchst einen eigenen API-Schlüssel von Anthropic; die Nutzung wird über dein Anthropic-Konto abgerechnet.",
+      "keyLabel": "Anthropic-API-Schlüssel",
+      "privacy": "Bei aktivierter KI werden die jeweils betroffenen Inhalte (z. B. der Text einer Notiz) an Anthropic gesendet. Vor jedem Aufruf siehst du, was gesendet wird. Der Schlüssel wird lokal im Anmeldeinformationsspeicher des Betriebssystems abgelegt, nie in der Datenbank oder im Log."
+    },
+    "appearance": {
+      "title": "Darstellung",
+      "description": "Die Vorschau wird sofort angewendet."
+    },
+    "import": {
+      "title": "Datenimport",
+      "description": "Optional: bestehende Daten übernehmen. Der Import wird erst beim Abschließen der Einrichtung ausgeführt.",
+      "grades": "Noten",
+      "tasks": "Aufgaben",
+      "cards": "Lernkarten",
+      "notes": "Notizen",
+      "csv": "CSV-Datei",
+      "anki": "Anki-Textexport",
+      "markdownFiles": "Markdown-Dateien",
+      "markdownFolder": "Ganzer Ordner",
+      "count": "{{count}} Einträge",
+      "skippedRows": "{{count}} Zeilen übersprungen",
+      "formats": "CSV: Spalten Fach, Titel, Note/Wert, Gewichtung, Datum bzw. Titel, Fach, Fällig, Priorität. Anki: Export „Notizen als Text“ (.txt), keine .apkg-Dateien."
+    },
+    "summary": {
+      "title": "Zusammenfassung",
+      "description": "Prüfe deine Einstellungen. Erst mit „Einrichtung abschließen“ werden Datenbank, Ordner und Einstellungen angelegt.",
+      "default": "Standard",
+      "timetable": "{{days}} Tage · {{lessons}} Stunden · A/B-Wochen: {{ab}}"
+    }
   }
 }

@@ -52,6 +52,10 @@ export class TauriSqlAdapter implements DbAdapter {
     }
   }
 
+  async flush(): Promise<void> {
+    // sqlx commits synchronously; WAL checkpoints are handled by SQLite.
+  }
+
   async close(): Promise<void> {
     await this.db.close();
   }

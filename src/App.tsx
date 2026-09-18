@@ -1,4 +1,4 @@
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "@/components/layout/AppLayout";
@@ -6,13 +6,26 @@ import { DashboardPage } from "@/pages/DashboardPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { AppShell } from "@/app/AppShell";
+import { SetupWizard } from "@/features/setup/SetupWizard";
+import { useAppStore } from "@/stores/appStore";
 
 // Hash routing works identically under the Vite dev server, the Tauri
 // production protocol and Playwright, so no server-side fallback is needed.
+/** Redirects to the wizard until the first-run setup has been completed. */
+function RequireSetup() {
+  const done = useAppStore((s) => s.setupCompleted);
+  return done ? <Outlet /> : <Navigate to="/setup" replace />;
+}
+
 const router = createHashRouter([
+  { path: "/setup", element: <SetupWizard /> },
   {
     path: "/",
-    element: <AppLayout />,
+    element: <RequireSetup />,
+    children: [
+      {
+        path: "/",
+        element: <AppLayout />,
     children: [
       { index: true, element: <DashboardPage /> },
       { path: "timetable", element: <PlaceholderPage titleKey="nav.timetable" /> },
@@ -25,6 +38,8 @@ const router = createHashRouter([
       { path: "documents", element: <PlaceholderPage titleKey="nav.documents" /> },
       { path: "tools", element: <PlaceholderPage titleKey="nav.tools" /> },
       { path: "settings", element: <SettingsPage /> },
+        ],
+      },
     ],
   },
 ]);

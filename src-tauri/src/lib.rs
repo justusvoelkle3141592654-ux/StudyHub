@@ -7,6 +7,7 @@
 //! writes, database backups).
 
 mod commands;
+mod secrets;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -33,6 +34,9 @@ pub fn run() {
             commands::sha256_file,
             commands::append_log,
             commands::log_file_path,
+            secrets::secret_set,
+            secrets::secret_get,
+            secrets::secret_delete,
         ])
         .run(tauri::generate_context!())
         .expect("error while running StudyHub");

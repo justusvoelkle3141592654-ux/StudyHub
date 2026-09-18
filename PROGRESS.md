@@ -31,7 +31,16 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] `docs/DATENMODELL.md`
 
 ## Phase 3 – Setup wizard (15 steps, offline first)
-- [ ] …
+- [x] `src/features/setup`: 15 steps, progress bar, back / next / "set up later", summary with jump-to-step
+- [x] Nothing is persisted before "Finish setup" (`applySetup`), so cancelling leaves no half state
+- [x] Auto-start on first run (`RequireSetup` route guard), re-runnable from settings with pre-filled values
+- [x] Profile-based subject suggestions, timetable skeleton (days, lessons, times, A/B weeks)
+- [x] Grade scale + weighting, flashcard daily goal + intensity, notification opt-in (OS permission asked only on opt-in)
+- [x] AI step: off by default, API key stored via OS credential store (Rust `keyring`) / Android private dir
+- [x] Data import: CSV (grades, tasks), Anki text export (cards), Markdown files or folder (notes) with parsers + unit tests
+- [x] Database relocation (desktop) and working folder with `files/ documents/ exports/ backups/`
+- [x] Playwright test for the full wizard flow (`e2e/setup-wizard.spec.ts`)
+- [~] Cloud mode option is shown but disabled until phase 9 (no Supabase configured); account step shows a note
 
 ## Phase 4 – Subjects, timetable, tasks, exams, dashboard
 ## Phase 5 – Notes with full-text search
@@ -54,6 +63,8 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 | D5 | sql.js (browser/test SQLite) has no FTS5. Note search uses FTS5 inside Tauri (verified: sqlx bundles SQLite with `SQLITE_ENABLE_FTS5`) and a LIKE fallback in the browser dev build. Migration `0002` is flagged `-- @requires fts5`. | Keeps the real app on FTS5 as required while dev/test stay runnable. |
 | D6 | Path-based file operations on user-chosen folders (custom DB directory, working folder) go through small Rust commands that only accept paths inside roots registered at startup. The fs plugin scope stays limited to the app data directory. | The fs plugin scope is static; user-chosen folders are only known at runtime. |
 | D7 | The app data folder is named after the Tauri identifier (`de.studyhub.app`), i.e. `%APPDATA%\de.studyhub.app\studyhub.db` instead of `…\StudyHub\…`. | Android requires a reverse-domain identifier; Tauri derives the folder from it. |
+| D8 | Anki import supports the plain-text export ("Notes in Plain Text", .txt with `#separator` headers), not `.apkg` archives. | `.apkg` is a zip with an SQLite database inside; parsing it in the WebView would need a zip + SQLite reader and adds little value for a first-run import. |
+| D9 | Secrets (API key, later auth tokens) are stored through Rust: `keyring` crate (Windows Credential Manager) on desktop, a JSON file in the app-private directory on Android (no keyring backend exists there; Android isolates and encrypts app-private storage). In the browser dev build they live in `sessionStorage`. | Brief 3.6 / 4 step 12: never store secrets in SQLite or logs. |
 | D4 | Versions verified against the registries on 2026-09-18: Vite 8.3, React 18.3.1, TypeScript 5.9.3, Tailwind 4.3, Tauri 2.11 (crates 2.x, npm `@tauri-apps/*` 2.x), Vitest 5.0, Playwright 1.63. | Brief section 7: no invented dependencies. |
 
 ## Open questions for the project owner
