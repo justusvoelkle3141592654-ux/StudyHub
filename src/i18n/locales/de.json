@@ -1,5 +1,8 @@
 {
-  "app": { "name": "StudyHub", "tagline": "Alles für Schule, Studium und Beruf an einem Ort." },
+  "app": {
+    "name": "StudyHub",
+    "tagline": "Alles für Schule, Studium und Beruf an einem Ort."
+  },
   "nav": {
     "dashboard": "Startseite",
     "timetable": "Stundenplan",
@@ -50,7 +53,12 @@
     "cloudMode": "Cloud-Sync",
     "version": "Version"
   },
-  "theme": { "light": "Hell", "dark": "Dunkel", "system": "Systemvorgabe", "toggle": "Darstellung wechseln" },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "Systemvorgabe",
+    "toggle": "Darstellung wechseln"
+  },
   "settings": {
     "title": "Einstellungen",
     "appearance": "Darstellung",
@@ -66,5 +74,13 @@
     "german": "Deutsch",
     "english": "Englisch"
   },
-  "dashboard": { "title": "Startseite", "welcome": "Willkommen bei StudyHub" }
+  "dashboard": {
+    "title": "Startseite",
+    "welcome": "Willkommen bei StudyHub"
+  },
+  "startup": {
+    "errorTitle": "StudyHub konnte nicht gestartet werden",
+    "errorHint": "Die lokale Datenbank konnte nicht geöffnet oder aktualisiert werden. Eine Sicherung wurde vor der Aktualisierung angelegt. Details stehen in der Logdatei im App-Datenverzeichnis.",
+    "retry": "Erneut versuchen"
+  }
 }

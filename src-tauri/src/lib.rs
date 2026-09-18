@@ -18,8 +18,21 @@ pub fn run() {
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_sql::Builder::default().build())
+        .manage(commands::AllowedRoots::default())
         .invoke_handler(tauri::generate_handler![
             commands::app_version,
+            commands::set_allowed_roots,
+            commands::fs_copy_file,
+            commands::fs_remove_file,
+            commands::fs_mkdir,
+            commands::fs_list_dir,
+            commands::fs_exists,
+            commands::fs_stat,
+            commands::fs_read_file,
+            commands::fs_write_file,
+            commands::sha256_file,
+            commands::append_log,
+            commands::log_file_path,
         ])
         .run(tauri::generate_context!())
         .expect("error while running StudyHub");

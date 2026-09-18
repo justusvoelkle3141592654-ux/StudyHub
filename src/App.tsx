@@ -5,6 +5,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { DashboardPage } from "@/pages/DashboardPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
+import { AppShell } from "@/app/AppShell";
 
 // Hash routing works identically under the Vite dev server, the Tauri
 // production protocol and Playwright, so no server-side fallback is needed.
@@ -31,7 +32,9 @@ const router = createHashRouter([
 export default function App() {
   return (
     <TooltipProvider delayDuration={300}>
-      <RouterProvider router={router} />
+      <AppShell>
+        <RouterProvider router={router} />
+      </AppShell>
       <Toaster richColors position="bottom-right" closeButton />
     </TooltipProvider>
   );

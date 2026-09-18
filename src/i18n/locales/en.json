@@ -1,5 +1,8 @@
 {
-  "app": { "name": "StudyHub", "tagline": "Everything for school, university and work in one place." },
+  "app": {
+    "name": "StudyHub",
+    "tagline": "Everything for school, university and work in one place."
+  },
   "nav": {
     "dashboard": "Home",
     "timetable": "Timetable",
@@ -50,7 +53,12 @@
     "cloudMode": "Cloud sync",
     "version": "Version"
   },
-  "theme": { "light": "Light", "dark": "Dark", "system": "System", "toggle": "Switch theme" },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Switch theme"
+  },
   "settings": {
     "title": "Settings",
     "appearance": "Appearance",
@@ -66,5 +74,13 @@
     "german": "German",
     "english": "English"
   },
-  "dashboard": { "title": "Home", "welcome": "Welcome to StudyHub" }
+  "dashboard": {
+    "title": "Home",
+    "welcome": "Welcome to StudyHub"
+  },
+  "startup": {
+    "errorTitle": "StudyHub could not start",
+    "errorHint": "The local database could not be opened or upgraded. A backup was written before the upgrade. Details are in the log file in the app data directory.",
+    "retry": "Try again"
+  }
 }
