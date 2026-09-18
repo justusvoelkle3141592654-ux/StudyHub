@@ -368,5 +368,51 @@
     "examSoon": "Exam coming up",
     "dailyTitle": "Time to study",
     "dailyBody": "{{count}} flashcards are waiting for you today."
+  },
+  "folders": {
+    "folder": "Folder",
+    "new": "New folder",
+    "newSub": "Create subfolder",
+    "rename": "Rename",
+    "name": "Name",
+    "actions": "Folder actions",
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
+  "notes": {
+    "new": "New note",
+    "untitled": "Untitled note",
+    "allNotes": "All notes",
+    "noFolder": "No folder",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Note title",
+    "contentLabel": "Content (Markdown)",
+    "contentPlaceholder": "Write Markdown here …",
+    "tags": "Tags",
+    "addTag": "Add tag",
+    "viewMode": "View",
+    "mode": {
+      "edit": "Editor only",
+      "split": "Editor and preview",
+      "preview": "Preview only"
+    },
+    "pin": "Pin",
+    "unpin": "Unpin",
+    "pinned": "Pinned",
+    "export": "Export",
+    "exportFolder": "Export folder",
+    "exportFolderMd": "Folder as Markdown",
+    "exportFolderPdf": "Folder as PDF",
+    "exported": "Exported: {{path}}",
+    "saving": "Saving …",
+    "savedAt": "Saved {{time}}",
+    "searchPlaceholder": "Full-text search …",
+    "noHits": "No results.",
+    "notFound": "This note no longer exists.",
+    "deleteHint": "The note is moved to the trash and removed from other devices via sync.",
+    "sidebar": "Folders and tags",
+    "editor": "Editor",
+    "pickTitle": "No note selected",
+    "pickHint": "Pick a note on the left or create a new one. Markdown renders live."
   }
 }

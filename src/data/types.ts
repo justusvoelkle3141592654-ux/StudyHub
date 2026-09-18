@@ -77,6 +77,11 @@ export interface NoteTag extends SyncFields {
   tag: string;
 }
 
+export interface NoteFile extends SyncFields {
+  note_id: string;
+  file_id: string;
+}
+
 export interface FlashcardDeck extends SyncFields {
   name: string;
   subject_id: string | null;

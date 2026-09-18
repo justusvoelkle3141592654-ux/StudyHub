@@ -368,5 +368,51 @@
     "examSoon": "Prüfung steht an",
     "dailyTitle": "Zeit zum Lernen",
     "dailyBody": "{{count}} Lernkarten warten heute auf dich."
+  },
+  "folders": {
+    "folder": "Ordner",
+    "new": "Neuer Ordner",
+    "newSub": "Unterordner anlegen",
+    "rename": "Umbenennen",
+    "name": "Name",
+    "actions": "Ordneraktionen",
+    "expand": "Aufklappen",
+    "collapse": "Zuklappen"
+  },
+  "notes": {
+    "new": "Neue Notiz",
+    "untitled": "Unbenannte Notiz",
+    "allNotes": "Alle Notizen",
+    "noFolder": "Kein Ordner",
+    "titleLabel": "Titel",
+    "titlePlaceholder": "Titel der Notiz",
+    "contentLabel": "Inhalt (Markdown)",
+    "contentPlaceholder": "Schreibe hier in Markdown …",
+    "tags": "Tags",
+    "addTag": "Tag hinzufügen",
+    "viewMode": "Ansicht",
+    "mode": {
+      "edit": "Nur Editor",
+      "split": "Editor und Vorschau",
+      "preview": "Nur Vorschau"
+    },
+    "pin": "Anheften",
+    "unpin": "Lösen",
+    "pinned": "Angeheftet",
+    "export": "Exportieren",
+    "exportFolder": "Ordner exportieren",
+    "exportFolderMd": "Ordner als Markdown",
+    "exportFolderPdf": "Ordner als PDF",
+    "exported": "Exportiert: {{path}}",
+    "saving": "Wird gespeichert …",
+    "savedAt": "Gespeichert {{time}}",
+    "searchPlaceholder": "Volltextsuche …",
+    "noHits": "Keine Treffer.",
+    "notFound": "Diese Notiz existiert nicht mehr.",
+    "deleteHint": "Die Notiz wird in den Papierkorb verschoben und kann per Synchronisation auf anderen Geräten ebenfalls entfernt werden.",
+    "sidebar": "Ordner und Tags",
+    "editor": "Editor",
+    "pickTitle": "Keine Notiz ausgewählt",
+    "pickHint": "Wähle links eine Notiz aus oder lege eine neue an. Markdown wird live gerendert."
   }
 }

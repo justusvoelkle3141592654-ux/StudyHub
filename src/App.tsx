@@ -7,6 +7,7 @@ import { SubjectsPage } from "@/features/subjects/SubjectsPage";
 import { TimetablePage } from "@/features/timetable/TimetablePage";
 import { TasksPage } from "@/features/tasks/TasksPage";
 import { ExamsPage } from "@/features/exams/ExamsPage";
+import { NotesPage } from "@/features/notes/NotesPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { AppShell } from "@/app/AppShell";
@@ -36,7 +37,8 @@ const router = createHashRouter([
       { path: "tasks", element: <TasksPage /> },
       { path: "exams", element: <ExamsPage /> },
       { path: "subjects", element: <SubjectsPage /> },
-      { path: "notes", element: <PlaceholderPage titleKey="nav.notes" /> },
+      { path: "notes", element: <NotesPage /> },
+      { path: "notes/:id", element: <NotesPage /> },
       { path: "flashcards", element: <PlaceholderPage titleKey="nav.flashcards" /> },
       { path: "grades", element: <PlaceholderPage titleKey="nav.grades" /> },
       { path: "files", element: <PlaceholderPage titleKey="nav.files" /> },

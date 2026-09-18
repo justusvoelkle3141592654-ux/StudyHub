@@ -4,7 +4,7 @@ import { TimetableRepository } from "./timetable";
 import { TaskRepository } from "./tasks";
 import { ExamRepository } from "./exams";
 import { FolderRepository } from "./folders";
-import { NoteRepository, NoteTagRepository } from "./notes";
+import { NoteFileRepository, NoteRepository, NoteTagRepository } from "./notes";
 import { FlashcardDeckRepository, FlashcardRepository, FlashcardReviewRepository } from "./flashcards";
 import { GradeRepository } from "./grades";
 import { FileRepository } from "./files";
@@ -21,6 +21,7 @@ export class Repositories {
   readonly folders: FolderRepository;
   readonly notes: NoteRepository;
   readonly noteTags: NoteTagRepository;
+  readonly noteFiles: NoteFileRepository;
   readonly decks: FlashcardDeckRepository;
   readonly flashcards: FlashcardRepository;
   readonly reviews: FlashcardReviewRepository;
@@ -38,6 +39,7 @@ export class Repositories {
     this.folders = new FolderRepository(db);
     this.notes = new NoteRepository(db);
     this.noteTags = new NoteTagRepository(db);
+    this.noteFiles = new NoteFileRepository(db);
     this.decks = new FlashcardDeckRepository(db);
     this.flashcards = new FlashcardRepository(db);
     this.reviews = new FlashcardReviewRepository(db);
@@ -58,6 +60,7 @@ export class Repositories {
       folders: this.folders,
       notes: this.notes,
       note_tags: this.noteTags,
+      note_files: this.noteFiles,
       flashcard_decks: this.decks,
       flashcards: this.flashcards,
       flashcard_reviews: this.reviews,

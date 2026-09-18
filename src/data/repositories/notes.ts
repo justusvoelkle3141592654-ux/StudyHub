@@ -1,7 +1,7 @@
 import { BaseRepository, newId } from "../repository";
 import type { DbAdapter } from "../db/adapter";
 import { dataEvents } from "../events";
-import type { NewEntity, Note, NoteTag } from "../types";
+import type { NewEntity, Note, NoteFile, NoteTag } from "../types";
 
 export class NoteRepository extends BaseRepository<Note, "content_markdown" | "subject_id" | "folder_id" | "is_pinned"> {
   constructor(db: DbAdapter) {
@@ -99,5 +99,33 @@ export class NoteTagRepository extends BaseRepository<NoteTag> {
       }
     }
     dataEvents.emit("note_tags", [noteId]);
+  }
+}
+
+export class NoteFileRepository extends BaseRepository<NoteFile> {
+  constructor(db: DbAdapter) {
+    super(db, "note_files", ["note_id", "file_id"]);
+  }
+
+  getForNote(noteId: string) {
+    return this.query("note_id = ?", [noteId]);
+  }
+
+  getForFile(fileId: string) {
+    return this.query("file_id = ?", [fileId]);
+  }
+
+  async link(noteId: string, fileId: string): Promise<void> {
+    const existing = await this.db.select<NoteFile>("SELECT * FROM note_files WHERE note_id = ? AND file_id = ? LIMIT 1", [noteId, fileId]);
+    if (existing[0]) {
+      if (existing[0].deleted_at) await this.restore(existing[0].id);
+      return;
+    }
+    await this.insert({ note_id: noteId, file_id: fileId });
+  }
+
+  async unlink(noteId: string, fileId: string): Promise<void> {
+    const existing = await this.query("note_id = ? AND file_id = ?", [noteId, fileId]);
+    for (const e of existing) await this.softDelete(e.id);
   }
 }

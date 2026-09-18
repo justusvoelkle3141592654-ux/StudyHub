@@ -54,6 +54,13 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] Settings mirror store (`settingsStore`) + reactive repository queries (`useRepoQuery`)
 - [x] Playwright: create/complete/filter task, timetable slot visible on dashboard
 ## Phase 5 – Notes with full-text search
+- [x] Three-pane notes module: folder tree (create/rename/delete, nested), tag filter, search; list; editor at `/notes/:id`
+- [x] Markdown editor (editor / split / preview modes) with live GFM preview, debounced autosave, pin, subject and folder assignment
+- [x] Tags as chips (`note_tags` rows, synchronisable)
+- [x] Full-text search: FTS5 (`notes_fts`, `bm25` ranking) in Tauri, LIKE fallback in the browser build
+- [x] Export: single note or whole folder as Markdown or plain PDF (`pdf-lib`, Helvetica, A4)
+- [x] `note_files` link table (migration 0003) for note ↔ file links; UI follows in phase 8 with the files module
+- [x] Playwright test: note creation, live preview, tags, search
 ## Phase 6 – Flashcards with SM-2
 ## Phase 7 – Grades
 ## Phase 8 – Files and file-system access, backups
