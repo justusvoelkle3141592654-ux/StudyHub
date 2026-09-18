@@ -79,7 +79,10 @@
     "backups": "Sicherungen",
     "backupsHint": "Täglich beim Start wird eine Kopie der Datenbank in backups/ abgelegt; die letzten 14 bleiben erhalten.",
     "backupNow": "Jetzt sichern",
-    "backupDone": "Sicherung geschrieben: {{path}}"
+    "backupDone": "Sicherung geschrieben: {{path}}",
+    "modules": "Module",
+    "modulesHint": "Welche Module in der Seitenleiste erscheinen. Die Vorauswahl richtet sich nach dem Nutzungsprofil.",
+    "modulesReset": "Auf Profil-Standard zurücksetzen"
   },
   "dashboard": {
     "title": "Startseite",

@@ -116,6 +116,14 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] Playwright test with a mocked Messages API (hidden buttons without key, preview, streaming, apply, hide again); unit test for the Markdown→HTML insert helper
 - [ ] Server-side refusal fallbacks (`fallbacks` beta) are not enabled: with a user-supplied key and model choice a refusal is shown as a message instead
 ## Phase 13 – Tests, polish, Windows and Android builds
+- [x] Unit tests (Vitest, 69): SM-2, grade math, repository layer, migrations, sync conflict resolution + engine, importers, exports, tools
+- [x] Playwright (12 flows): setup wizard, task creation, timetable, notes, flashcards study session, grades, files, office documents, tools, AI (mocked API)
+- [x] Settings: module visibility toggles (all modules stay reachable regardless of profile)
+- [x] README: Windows build (NSIS per-user installer + MSI, no admin rights), Android build incl. keystore creation, `keystore.properties`, `scripts/android-signing.mjs`, git-ignore rules
+- [x] GitHub Actions workflow: tests, Windows installer job, Android APK job (signed when secrets are set)
+- [~] Rust side: `cargo check` passes on Linux (all plugins, commands, keyring, secrets). A cross-check for `x86_64-pc-windows-msvc` was attempted here and stops at `libsqlite3-sys`, whose bundled SQLite C build needs the MSVC toolchain (`lib.exe`) – an environment limitation, not a code error; the actual Windows build must run on Windows (or in the workflow)
+- [ ] **Not done in this environment:** producing the actual `.exe`/`.msi` and `.apk`. This session runs on Linux without a Windows host, Android SDK or NDK. The build definitions are in place (`tauri.conf.json`, workflow); run `npm run tauri build` on Windows and `npm run tauri android build -- --apk` with the Android toolchain, or push a tag to let the workflow build both.
+- [ ] Not verified on real devices: WebView2/Android WebView rendering, notification permissions, dialog behaviour on Android (SAF). The code branches on platform as required, but only the browser build was exercised here.
 
 ## Decisions and deviations from the brief
 

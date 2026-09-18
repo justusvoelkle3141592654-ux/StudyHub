@@ -13,6 +13,9 @@ import { formatDate } from "@/lib/dates";
 import { reportError } from "@/lib/logger";
 import { CloudSettings } from "@/features/cloud/CloudSettings";
 import { AiSettings } from "@/ai/AiSettings";
+import { ALL_MODULES, PROFILE_MODULES, type ModuleId } from "@/app/modules";
+import { useAppStore } from "@/stores/appStore";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,6 +29,37 @@ function SettingRow({ label, htmlFor, children }: { label: string; htmlFor: stri
       <Label htmlFor={htmlFor}>{label}</Label>
       <div className="w-44">{children}</div>
     </div>
+  );
+}
+
+function ModulesSection() {
+  const { t } = useTranslation();
+  const profile = useAppStore((s) => s.profile);
+  const setSetting = useSettingsStore((s) => s.set);
+  const visible = useSetting<ModuleId[] | null>(SETTINGS.modulesVisible, null) ?? PROFILE_MODULES[profile];
+  const toggle = (m: ModuleId, on: boolean) => void setSetting(SETTINGS.modulesVisible, on ? [...new Set([...visible, m])] : visible.filter((x) => x !== m));
+  return (
+    <Card className="mt-4">
+      <CardHeader>
+        <CardTitle>{t("settings.modules")}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="mb-3 text-sm text-muted-foreground">{t("settings.modulesHint")}</p>
+        <ul className="grid gap-2 sm:grid-cols-2">
+          {ALL_MODULES.map((m) => (
+            <li key={m}>
+              <label className="flex cursor-pointer items-center gap-2 text-sm">
+                <Checkbox checked={visible.includes(m)} onCheckedChange={(v) => toggle(m, v === true)} />
+                {t(`nav.${m}`)}
+              </label>
+            </li>
+          ))}
+        </ul>
+        <Button variant="link" size="sm" className="mt-2 h-auto p-0" onClick={() => void setSetting(SETTINGS.modulesVisible, null)}>
+          {t("settings.modulesReset")}
+        </Button>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -152,6 +186,7 @@ export function SettingsPage() {
           </SettingRow>
         </CardContent>
       </Card>
+      <ModulesSection />
       <StorageSection />
       <CloudSettings />
       <AiSettings />

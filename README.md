@@ -28,19 +28,78 @@ npm run typecheck
 
 ## Building
 
-### Windows
+Version numbers live in `package.json`, `src-tauri/tauri.conf.json` and `src-tauri/Cargo.toml`
+(semantic versioning; keep all three identical). Builds for both platforms also run in GitHub
+Actions (`.github/workflows/build.yml`): the Windows job produces the installers, the Android job
+the APK (signed when the keystore secrets are configured).
+
+### Windows (.exe + installer)
+
+Requirements: Windows 10/11, Node.js 22+, Rust stable (`rustup`), Microsoft Visual Studio C++
+Build Tools, WebView2 runtime (part of Windows 11; the NSIS installer bootstraps it on Windows 10).
 
 ```bash
+npm ci
 npm run tauri build
 ```
 
-Produces `src-tauri/target/release/StudyHub.exe` plus an NSIS installer (`*-setup.exe`) and an MSI
-in `src-tauri/target/release/bundle/`. The NSIS installer is configured for a per-user install
-(`installMode: currentUser`), so no administrator rights are required.
+Output in `src-tauri/target/release/`:
 
-### Android
+- `StudyHub.exe` – the portable executable
+- `bundle/nsis/StudyHub_<version>_x64-setup.exe` – installer, per-user install
+  (`installMode: currentUser`, **no administrator rights needed**)
+- `bundle/msi/StudyHub_<version>_x64_en-US.msi` – MSI package (per-user as well)
 
-Android build instructions (SDK/NDK setup, signing key) follow in phase 13.
+On the first start the app creates its database in `%APPDATA%\de.studyhub.app\`, runs all
+migrations and opens the setup wizard – no manual preparation required.
+
+### Android (.apk)
+
+Requirements: Android Studio (SDK 34, NDK, command-line tools), JDK 17, Rust targets
+`aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android`
+(`rustup target add …`), the environment variables `ANDROID_HOME` and `NDK_HOME`.
+
+```bash
+npm ci
+npm run tauri android init      # generates src-tauri/gen/android (once)
+npm run tauri android build -- --apk
+```
+
+Unsigned/debug-signed APKs land in `src-tauri/gen/android/app/build/outputs/apk/`. For a
+**signed release APK**:
+
+1. Create a keystore once (keep it outside the repository and back it up):
+
+   ```bash
+   keytool -genkey -v -keystore upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias studyhub
+   ```
+
+2. Create `src-tauri/gen/android/keystore.properties` (git-ignored):
+
+   ```
+   storeFile=../../../../upload-keystore.jks
+   storePassword=<password>
+   keyAlias=studyhub
+   keyPassword=<password>
+   ```
+
+3. Add the signing config to the generated Gradle project and build:
+
+   ```bash
+   node scripts/android-signing.mjs
+   npm run tauri android build -- --apk
+   ```
+
+   The script inserts a `release` signing config that reads `keystore.properties`
+   into `src-tauri/gen/android/app/build.gradle.kts`.
+
+`.gitignore` excludes `*.jks`, `*.keystore`, `keystore.properties` and the generated Android
+build output; **never commit the key**. In CI the keystore is provided as the base64 secret
+`ANDROID_KEYSTORE_BASE64` together with `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` and
+`ANDROID_KEY_PASSWORD`.
+
+On Android the app keeps all data in its private app directory; files are imported through the
+system picker (Storage Access Framework) and copied into that directory.
 
 ## Cloud mode (optional) – Supabase setup
 

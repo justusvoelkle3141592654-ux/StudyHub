@@ -79,7 +79,10 @@
     "backups": "Backups",
     "backupsHint": "A copy of the database is written to backups/ once a day at startup; the last 14 are kept.",
     "backupNow": "Back up now",
-    "backupDone": "Backup written: {{path}}"
+    "backupDone": "Backup written: {{path}}",
+    "modules": "Modules",
+    "modulesHint": "Which modules appear in the sidebar. The default follows the usage profile.",
+    "modulesReset": "Reset to profile default"
   },
   "dashboard": {
     "title": "Home",
