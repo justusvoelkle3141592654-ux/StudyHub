@@ -20,6 +20,7 @@ import { MarkdownPreview } from "./MarkdownPreview";
 import { TagInput } from "./TagInput";
 import { exportNoteMarkdown, exportNotePdf } from "./exportNotes";
 import { LinkedFiles } from "./LinkedFiles";
+import { NoteAiMenu } from "@/ai/NoteAiMenu";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 type Mode = "edit" | "split" | "preview";
@@ -193,6 +194,14 @@ export function NoteEditor({ noteId, folders }: { noteId: string; folders: Folde
           }}
         />
         <LinkedFiles noteId={noteId} />
+        <NoteAiMenu
+          title={title}
+          content={content}
+          onInsert={(md) => {
+            setContent((c) => c + md);
+            scheduleSave();
+          }}
+        />
         <span className="ml-auto text-muted-foreground" aria-live="polite">
           {dirty ? t("notes.saving") : savedAt ? t("notes.savedAt", { time: formatDateTime(savedAt) }) : ""}
         </span>

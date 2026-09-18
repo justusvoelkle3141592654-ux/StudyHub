@@ -19,6 +19,7 @@ import { DeckDialog } from "./FlashcardsPage";
 import { StatsChart } from "./StatsChart";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { EmptyState } from "@/components/EmptyState";
+import { TopicQuestionsButton } from "@/ai/TopicQuestionsButton";
 
 export function DeckPage() {
   const { t } = useTranslation();
@@ -78,6 +79,7 @@ export function DeckPage() {
             <Button variant="outline" size="icon" aria-label={t("flashcards.deleteDeck")} onClick={() => setConfirmDeleteDeck(true)}>
               <Trash2 />
             </Button>
+            <TopicQuestionsButton deckId={deckId} />
             <Button variant="secondary" asChild>
               <Link to={`/flashcards/${deckId}/study`} data-testid="deck-study">
                 <Play /> {t("flashcards.study")} ({dueCount})

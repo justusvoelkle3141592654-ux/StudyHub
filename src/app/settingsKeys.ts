@@ -15,6 +15,7 @@ export const SETTINGS = {
   notificationsLeadMinutes: "notifications.leadMinutes",
   dailyReminderTime: "notifications.dailyReminderTime",
   aiEnabled: "ai.enabled",
+  aiModel: "ai.model",
   timetableDays: "timetable.days",
   timetableLessonsPerDay: "timetable.lessonsPerDay",
   timetableLessonTimes: "timetable.lessonTimes",

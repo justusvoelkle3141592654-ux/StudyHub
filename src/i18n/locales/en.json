@@ -709,5 +709,44 @@
       "configuration": "Electron configuration",
       "nameEn": "German name"
     }
+  },
+  "ai": {
+    "enable": "Enable AI features",
+    "statusOn": "Active – buttons appear in notes, documents and flashcards.",
+    "statusOff": "Key stored, features switched off.",
+    "statusNoKey": "Store an Anthropic API key first.",
+    "keySaved": "Key saved.",
+    "removeKey": "Remove key",
+    "model": "Model",
+    "summarize": "Summarise note",
+    "flashcards": "Generate flashcards",
+    "questions": "Generate practice questions",
+    "questionsTopic": "Practice questions on a topic",
+    "outline": "Suggest an outline",
+    "draft": "Suggest a draft",
+    "topic": "Topic",
+    "previewHint": "This content will be sent to Anthropic (model {{model}}). Review it and confirm with “Send”.",
+    "privacyShort": "The request uses your own API key.",
+    "working": "Request running …",
+    "abort": "Cancel",
+    "send": "Send",
+    "apply": "Apply",
+    "insertIntoNote": "Insert into note",
+    "insertIntoDocument": "Insert into document",
+    "addCards": "Add cards",
+    "targetDeck": "Target deck",
+    "newDeck": "New deck “{{name}}”",
+    "cardsAdded": "{{count}} cards added",
+    "summaryHeading": "Summary (AI)",
+    "questionsHeading": "Practice questions (AI)",
+    "errors": {
+      "refusal": "The provider declined the request.",
+      "auth": "The API key was not accepted. Check it in the settings.",
+      "rateLimit": "Too many requests – please wait a moment.",
+      "network": "No connection to the AI provider.",
+      "api": "Error from the AI provider",
+      "noKey": "No API key stored.",
+      "aborted": "Cancelled."
+    }
   }
 }

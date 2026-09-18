@@ -709,5 +709,44 @@
       "configuration": "Elektronenkonfiguration",
       "nameEn": "Englischer Name"
     }
+  },
+  "ai": {
+    "enable": "KI-Funktionen aktivieren",
+    "statusOn": "Aktiv – Schaltflächen erscheinen in Notizen, Dokumenten und Lernkarten.",
+    "statusOff": "Schlüssel gespeichert, Funktionen ausgeschaltet.",
+    "statusNoKey": "Zuerst einen Anthropic-API-Schlüssel speichern.",
+    "keySaved": "Schlüssel gespeichert.",
+    "removeKey": "Schlüssel entfernen",
+    "model": "Modell",
+    "summarize": "Notiz zusammenfassen",
+    "flashcards": "Lernkarten erzeugen",
+    "questions": "Übungsfragen erzeugen",
+    "questionsTopic": "Übungsfragen zum Thema",
+    "outline": "Gliederung vorschlagen",
+    "draft": "Textentwurf vorschlagen",
+    "topic": "Thema",
+    "previewHint": "Dieser Inhalt wird an Anthropic gesendet (Modell {{model}}). Prüfe ihn und bestätige mit „Senden“.",
+    "privacyShort": "Die Anfrage läuft über deinen eigenen API-Schlüssel.",
+    "working": "Anfrage läuft …",
+    "abort": "Abbrechen",
+    "send": "Senden",
+    "apply": "Übernehmen",
+    "insertIntoNote": "In Notiz einfügen",
+    "insertIntoDocument": "In Dokument einfügen",
+    "addCards": "Karten hinzufügen",
+    "targetDeck": "Zielstapel",
+    "newDeck": "Neuer Stapel „{{name}}“",
+    "cardsAdded": "{{count}} Karten hinzugefügt",
+    "summaryHeading": "Zusammenfassung (KI)",
+    "questionsHeading": "Übungsfragen (KI)",
+    "errors": {
+      "refusal": "Die Anfrage wurde vom Anbieter abgelehnt.",
+      "auth": "Der API-Schlüssel wurde nicht akzeptiert. Prüfe ihn in den Einstellungen.",
+      "rateLimit": "Zu viele Anfragen – bitte kurz warten.",
+      "network": "Keine Verbindung zum KI-Anbieter.",
+      "api": "Fehler vom KI-Anbieter",
+      "noKey": "Kein API-Schlüssel hinterlegt.",
+      "aborted": "Abgebrochen."
+    }
   }
 }

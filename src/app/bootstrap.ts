@@ -8,6 +8,7 @@ import { startReminderScheduler } from "@/features/notifications/scheduler";
 import { registerFileRoots } from "@/features/files/fileService";
 import { runDailyBackupIfNeeded } from "@/features/backup/backupService";
 import { initSyncService } from "@/sync/syncService";
+import { useAiStore } from "@/ai/aiStore";
 
 /**
  * Application start: open the database, run migrations, load settings.
@@ -32,6 +33,7 @@ export async function bootstrap(): Promise<void> {
       void runDailyBackupIfNeeded();
     }
     void initSyncService();
+    void useAiStore.getState().refresh();
   } catch (e) {
     log.error("bootstrap", "startup failed", e);
     app.setStartupError(e instanceof Error ? e.message : String(e));

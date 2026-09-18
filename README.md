@@ -74,6 +74,14 @@ entry is shown in Settings → Cloud as problematic). Triggers: app start, every
 connection returns, and the "Sync now" button. The auth session is persisted with
 `tauri-plugin-store` in the app data directory (never in SQLite, never in the log).
 
+## AI features (optional, off by default)
+
+The AI module only exists when the user stores their own Anthropic API key (setup step 12 or
+Settings → KI-Funktionen). Without a key the buttons are not rendered. Every request first shows
+the exact content that will be sent and can be cancelled; requests go directly from the app to
+`api.anthropic.com` with the user's key (stored in the OS credential store on Windows, in the
+app-private directory on Android). No other data leaves the device.
+
 ## Versioning
 
 Semantic versioning. The version is maintained in `package.json`, `src-tauri/tauri.conf.json`

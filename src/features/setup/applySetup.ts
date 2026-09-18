@@ -145,6 +145,7 @@ export async function applySetup(draft: SetupDraft): Promise<void> {
   // 8. App state.
   await (await import("@/stores/settingsStore")).useSettingsStore.getState().load();
   await (await import("@/features/files/fileService")).registerFileRoots();
+  await (await import("@/ai/aiStore")).useAiStore.getState().refresh();
   const app = useAppStore.getState();
   app.setProfile(draft.profile);
   app.setSetupCompleted(true);

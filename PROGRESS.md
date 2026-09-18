@@ -107,6 +107,14 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] Periodic table: all 118 elements (number, symbol, de/en names, IUPAC abridged atomic weights or mass numbers, group, period, block, category, electron configuration from the Madelung rule + known exceptions); classic 18-column layout with f-block, search, detail dialog. Properties not reliably known (melting points, electronegativity …) are intentionally left out
 - [x] Unit tests (conversions, calculator, KaTeX rendering of all formulas, element data consistency incl. electron counts) and a Playwright test
 ## Phase 12 – AI features (optional)
+- [x] Off by default; buttons are rendered only when the feature is on **and** a key is stored (`useAiStore.available`), otherwise absent from the UI
+- [x] Anthropic Messages API via the official `@anthropic-ai/sdk` (browser/WebView mode with `dangerouslyAllowBrowser`, key read from the OS credential store per call, never logged); streaming for text, structured outputs (`messages.parse` + Zod) for cards/questions
+- [x] Model selectable in settings (Claude Opus 5 default, Sonnet 5, Haiku 4.5); adaptive thinking
+- [x] Every call shows the exact content that will be sent first, can be cancelled while running (AbortController) and applied afterwards
+- [x] Features: summarise note, generate flashcards from a note (into an existing or new deck), practice questions for a note or a free topic (deck page), outline / draft suggestion in the office text editor
+- [x] Settings section: enable switch, key entry/removal, model, privacy notice; wizard step 12 stores the key the same way
+- [x] Playwright test with a mocked Messages API (hidden buttons without key, preview, streaming, apply, hide again); unit test for the Markdown→HTML insert helper
+- [ ] Server-side refusal fallbacks (`fallbacks` beta) are not enabled: with a user-supplied key and model choice a refusal is shown as a message instead
 ## Phase 13 – Tests, polish, Windows and Android builds
 
 ## Decisions and deviations from the brief

@@ -38,6 +38,7 @@ import { PromptDialog } from "@/components/PromptDialog";
 import { Footnote, PageBreak } from "./extensions";
 import { parseDoc, wordCount, type PmNode } from "./docModel";
 import { exportTextDocument } from "./exportText";
+import { DocumentAiButton } from "@/ai/DocumentAiButton";
 
 function ToolButton({ label, active, disabled, onClick, children }: { label: string; active?: boolean; disabled?: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -170,6 +171,7 @@ export function TextEditor({ row }: { row: DocRow }) {
         <ToolButton label={t("documents.footnote")} active={editor.isActive("footnote")} onClick={openFootnote}><Superscript /></ToolButton>
         <ToolButton label={t("documents.pageBreak")} onClick={() => editor.chain().focus().insertPageBreak().run()}><Scissors /></ToolButton>
         <div className="flex-1" />
+        <DocumentAiButton getContext={() => editor.getText()} onInsertHtml={(html) => editor.chain().focus("end").insertContent(html).run()} />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="sm" data-testid="doc-export">
