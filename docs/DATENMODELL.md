@@ -94,13 +94,18 @@ Die Datenbank ist hinter dem Interface `DbAdapter` (`src/data/db/adapter.ts`) ab
 
 ## 5. Sync-Verfahren (Cloud-Modus)
 
-Wird in Phase 9 implementiert (`src/sync/syncEngine.ts`); das Verfahren ist wie folgt festgelegt:
+Implementiert in `src/sync/syncEngine.ts` (Engine, gegen das Interface `SyncRemote` getestet),
+`src/sync/supabaseRemote.ts` (Supabase-Anbindung) und `src/sync/syncService.ts` (Auslöser, Status):
 
 1. **Push**: Einträge aus `sync_queue` in Reihenfolge an Supabase senden (`upsert` je Tabelle).
-   Bei Erfolg: Queue-Eintrag entfernen, lokal `sync_status = 'synced'` und `remote_rev` aus der
-   Serverantwort übernehmen.
-2. **Pull**: Alle Server-Zeilen mit `updated_at > settings.last_sync_at` abrufen und lokal
-   übernehmen; anschließend `last_sync_at` fortschreiben.
+   Vorher wird die Server-Zeile gelesen; weicht ihr `rev` vom lokal bekannten `remote_rev` ab,
+   liegt ein Konflikt vor (siehe 3). Bei Erfolg: Queue-Eintrag entfernen, lokal
+   `sync_status = 'synced'` und `remote_rev` aus der Serverantwort übernehmen.
+2. **Pull**: Je Tabelle alle Server-Zeilen mit `synced_at > settings.sync.cursor.<Tabelle>`
+   abrufen (Serverzeit des Schreibvorgangs, nicht der Client-Zeitstempel – so gehen offline
+   bearbeitete und später hochgeladene Zeilen anderer Geräte nicht verloren) und lokal übernehmen;
+   anschließend den Cursor fortschreiben. `settings.sync.lastSyncAt` hält die Zeit des letzten
+   erfolgreichen Durchlaufs für die Anzeige.
 3. **Konflikte**: Ist eine Zeile lokal (`pending`) und entfernt geändert, gewinnt der neuere
    `updated_at`-Wert (Last-Write-Wins). Die unterlegene Version wird als Kopie mit dem Zusatz
    „ (Konflikt <Datum>)“ im Titel gespeichert; der Nutzer erhält eine Benachrichtigung.
@@ -109,9 +114,12 @@ Wird in Phase 9 implementiert (`src/sync/syncEngine.ts`); das Verfahren ist wie 
    wird der Eintrag mit `is_failed = 1` markiert und im Sync-Statusbereich angezeigt.
 5. **Auslöser**: App-Start, alle 5 Minuten, Rückkehr der Internetverbindung, manueller Knopf.
 
-Server-seitig existieren dieselben Tabellen mit zusätzlicher Spalte `rev BIGINT`, die per
-Trigger bei jedem Update hochgezählt wird; Row Level Security erlaubt nur Zeilen mit
-`user_id = auth.uid()`.
+Server-seitig existieren dieselben Tabellen (`supabase/schema.sql`) mit zusätzlichen Spalten
+`rev BIGINT` (per Trigger bei jedem Insert/Update hochgezählt) und `synced_at` (Serverzeit);
+Row Level Security erlaubt nur Zeilen mit `user_id = auth.uid()`, es gibt keine Delete-Policy.
+Dateien liegen in Supabase Storage in einem privaten Bucket je Nutzer (Bucket-ID = User-ID) unter
+`files/<Datei-ID>/<Name>`; in der Tabelle `files` steht nur `remote_path`. Beim Einschalten des
+Cloud-Modus werden alle vorhandenen lokalen Zeilen dem Nutzer zugeordnet und in die Queue gestellt.
 
 ## 6. Notenberechnung
 

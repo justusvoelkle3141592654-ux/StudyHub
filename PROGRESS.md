@@ -83,6 +83,15 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [x] Browser dev build keeps file contents in IndexedDB so the module is testable; Playwright test for import + preview + note link
 - [~] Cloud upload states are shown (pending / uploaded); the actual upload to Supabase Storage is part of phase 9
 ## Phase 9 – Cloud mode (Supabase)
+- [x] `supabase/schema.sql`: all tables with `rev` trigger and `synced_at`, RLS (`user_id = auth.uid()`, no delete policy), storage policies for one private bucket per user
+- [x] Auth (e-mail + password, sign-up, password reset) with the session persisted via tauri-plugin-store; `CloudAccountPanel` in wizard step 4 and settings
+- [x] `SyncEngine` against a `SyncRemote` interface: push with conflict detection via `rev`, pull with per-table server-time cursors, last-write-wins + "(Konflikt <Datum>)" copies, exponential backoff (1 s … 5 min), failed after 10 attempts, file uploads with progress
+- [x] `SupabaseRemote` implementation, `syncService` triggers (start, every 5 min, `online` event, manual button), status in the status bar and in settings (failed entries with retry/discard)
+- [x] Switching modes in settings: enabling queues all local rows for upload; disabling clears queue/cursors and signs out. App stays fully usable offline (status "Offline – wird später abgeglichen")
+- [x] Files: pending uploads go to storage, remote-only files are downloaded and cached on first preview; auto-upload setting
+- [x] Unit tests: conflict resolution, backoff, engine end-to-end against an in-memory remote (push, pull, deletes, both conflict directions, offline retry, 10-attempt failure, upload, initial enqueue)
+- [~] Not exercised against a live Supabase project in this environment (no network/credentials); the remote adapter follows the supabase-js 2.x API (`upsert().select().single()`, `gt('synced_at')`, storage `upload`/`download`/`createBucket`)
+- [x] README: Supabase setup, env vars, sync description; `.env.example`
 ## Phase 10 – Office module
 ## Phase 11 – Science and calculation tools
 ## Phase 12 – AI features (optional)
@@ -102,6 +111,8 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 | D9 | Secrets (API key, later auth tokens) are stored through Rust: `keyring` crate (Windows Credential Manager) on desktop, a JSON file in the app-private directory on Android (no keyring backend exists there; Android isolates and encrypts app-private storage). In the browser dev build they live in `sessionStorage`. | Brief 3.6 / 4 step 12: never store secrets in SQLite or logs. |
 | D10 | Percent → grade conversion uses piecewise linear anchors 100→1, 85→2, 70→3, 50→4, 30→5, 0→6; it is only applied when a grade's scale differs from the configured scale (e.g. after switching scales). | Schools differ in their percent tables; a transparent, documented default is better than a hidden one. |
 | D11 | Deleting a file entry never deletes bytes on disk (copies in `files/` and linked originals stay). | Brief 7 "avoid data loss"; the entry can be restored by sync/restore, the copy is small compared to the risk. |
+| D12 | Pull cursor is the server-side `synced_at` (set by trigger) per table, not the client `updated_at`. | With client timestamps a row edited offline on device A (old `updated_at`) and uploaded after device B's last sync would never reach B. |
+| D13 | The Supabase auth session is stored via tauri-plugin-store (app data dir) as the brief prescribes; the Anthropic API key goes to the OS credential store. | Brief 3.6 names the store API for tokens; the keyring blob limit (2.5 KB on Windows) is too small for a full session anyway. |
 | D4 | Versions verified against the registries on 2026-09-18: Vite 8.3, React 18.3.1, TypeScript 5.9.3, Tailwind 4.3, Tauri 2.11 (crates 2.x, npm `@tauri-apps/*` 2.x), Vitest 5.0, Playwright 1.63. | Brief section 7: no invented dependencies. |
 
 ## Open questions for the project owner

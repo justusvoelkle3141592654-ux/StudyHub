@@ -106,7 +106,25 @@
     "custom": "Eigene Farbe"
   },
   "cloud": {
-    "notYetAvailable": "Die Cloud-Anmeldung wird in einer späteren Phase verfügbar."
+    "notYetAvailable": "Die Cloud-Anmeldung wird in einer späteren Phase verfügbar.",
+    "title": "Cloud-Synchronisation",
+    "notConfigured": "In dieser Version ist kein Cloud-Dienst konfiguriert (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY beim Build).",
+    "signIn": "Anmelden",
+    "signUp": "Konto anlegen",
+    "forgot": "Passwort vergessen",
+    "sendReset": "Link senden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signedIn": "Angemeldet.",
+    "signedInAs": "Angemeldet als {{email}}",
+    "signOut": "Abmelden",
+    "confirmEmail": "Bitte bestätige deine E-Mail-Adresse über den zugesandten Link und melde dich dann an.",
+    "resetSent": "Falls ein Konto existiert, wurde ein Link zum Zurücksetzen gesendet.",
+    "authFailed": "Anmeldung fehlgeschlagen",
+    "modeOnHint": "Änderungen werden im Hintergrund mit deinem Konto abgeglichen. Ohne Internet bleibt alles benutzbar.",
+    "modeOffHint": "Zum Einschalten zuerst anmelden. Vorhandene Daten werden beim Umstellen hochgeladen.",
+    "autoUpload": "Dateien automatisch hochladen",
+    "autoUploadHint": "Aus: Dateien werden nur auf Anforderung (Knopf in der Dateivorschau) hochgeladen."
   },
   "grades": {
     "scale": {
@@ -517,5 +535,48 @@
     "openExternal": "Extern öffnen",
     "unknownType": "Unbekannter Typ",
     "deleteHint": "Der Eintrag wird entfernt. Kopien im Arbeitsordner und verlinkte Originale bleiben auf der Festplatte erhalten."
+  },
+  "sync": {
+    "now": "Jetzt synchronisieren",
+    "status": {
+      "idle": "Synchronisiert",
+      "syncing": "Synchronisiere …",
+      "offline": "Offline – wird später abgeglichen",
+      "error": "Sync-Fehler",
+      "disabled": "Aus"
+    },
+    "lastSync": "Zuletzt {{time}}",
+    "pending": "{{count}} ausstehend",
+    "uploading": "Upload {{done}}/{{total}}",
+    "done": "Synchronisiert: {{pushed}} gesendet, {{pulled}} empfangen",
+    "failed": "Synchronisation fehlgeschlagen",
+    "someFailed": "{{count}} Einträge konnten nicht übertragen werden",
+    "notSignedIn": "Nicht angemeldet",
+    "failedEntries": "{{count}} problematische Einträge",
+    "discardFailed": "Verwerfen",
+    "retry": "Erneut versuchen",
+    "conflictSuffix": "Konflikt",
+    "conflictTitle": "Konflikt aufgelöst",
+    "conflictBody": "{{table}}: Die neuere Version ({{winner}}) wurde übernommen; die andere ist als Kopie „{{copy}}“ erhalten.",
+    "winner": {
+      "local": "dieses Gerät",
+      "remote": "anderes Gerät"
+    },
+    "tables": {
+      "subjects": "Fach",
+      "timetable_slots": "Stundenplan",
+      "tasks": "Aufgabe",
+      "exams": "Prüfung",
+      "folders": "Ordner",
+      "notes": "Notiz",
+      "note_tags": "Tag",
+      "note_files": "Dateiverknüpfung",
+      "flashcard_decks": "Kartenstapel",
+      "flashcards": "Lernkarte",
+      "flashcard_reviews": "Lernprotokoll",
+      "grades": "Note",
+      "files": "Datei",
+      "documents": "Dokument"
+    }
   }
 }

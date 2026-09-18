@@ -106,7 +106,25 @@
     "custom": "Custom color"
   },
   "cloud": {
-    "notYetAvailable": "Cloud sign-in becomes available in a later phase."
+    "notYetAvailable": "Cloud sign-in becomes available in a later phase.",
+    "title": "Cloud synchronisation",
+    "notConfigured": "No cloud service is configured in this build (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY at build time).",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "forgot": "Forgot password",
+    "sendReset": "Send link",
+    "email": "E-mail",
+    "password": "Password",
+    "signedIn": "Signed in.",
+    "signedInAs": "Signed in as {{email}}",
+    "signOut": "Sign out",
+    "confirmEmail": "Please confirm your e-mail address via the link you received, then sign in.",
+    "resetSent": "If an account exists, a reset link has been sent.",
+    "authFailed": "Sign-in failed",
+    "modeOnHint": "Changes are synchronised with your account in the background. Everything stays usable offline.",
+    "modeOffHint": "Sign in first to enable. Existing data is uploaded when switching.",
+    "autoUpload": "Upload files automatically",
+    "autoUploadHint": "Off: files are only uploaded on request (button in the file preview)."
   },
   "grades": {
     "scale": {
@@ -517,5 +535,48 @@
     "openExternal": "Open externally",
     "unknownType": "Unknown type",
     "deleteHint": "The entry is removed. Copies in the working folder and linked originals stay on disk."
+  },
+  "sync": {
+    "now": "Sync now",
+    "status": {
+      "idle": "Synced",
+      "syncing": "Syncing …",
+      "offline": "Offline – will sync later",
+      "error": "Sync error",
+      "disabled": "Off"
+    },
+    "lastSync": "Last {{time}}",
+    "pending": "{{count}} pending",
+    "uploading": "Upload {{done}}/{{total}}",
+    "done": "Synced: {{pushed}} sent, {{pulled}} received",
+    "failed": "Synchronisation failed",
+    "someFailed": "{{count}} entries could not be transferred",
+    "notSignedIn": "Not signed in",
+    "failedEntries": "{{count}} problematic entries",
+    "discardFailed": "Discard",
+    "retry": "Retry",
+    "conflictSuffix": "conflict",
+    "conflictTitle": "Conflict resolved",
+    "conflictBody": "{{table}}: the newer version ({{winner}}) was kept; the other one is preserved as the copy “{{copy}}”.",
+    "winner": {
+      "local": "this device",
+      "remote": "other device"
+    },
+    "tables": {
+      "subjects": "Subject",
+      "timetable_slots": "Timetable",
+      "tasks": "Task",
+      "exams": "Exam",
+      "folders": "Folder",
+      "notes": "Note",
+      "note_tags": "Tag",
+      "note_files": "File link",
+      "flashcard_decks": "Deck",
+      "flashcards": "Flashcard",
+      "flashcard_reviews": "Review log",
+      "grades": "Grade",
+      "files": "File",
+      "documents": "Document"
+    }
   }
 }

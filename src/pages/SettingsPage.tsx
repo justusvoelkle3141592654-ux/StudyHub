@@ -11,6 +11,7 @@ import { createBackup, listBackups, type BackupInfo } from "@/features/backup/ba
 import { formatBytes } from "@/features/files/fileService";
 import { formatDate } from "@/lib/dates";
 import { reportError } from "@/lib/logger";
+import { CloudSettings } from "@/features/cloud/CloudSettings";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -151,6 +152,7 @@ export function SettingsPage() {
         </CardContent>
       </Card>
       <StorageSection />
+      <CloudSettings />
     </div>
   );
 }

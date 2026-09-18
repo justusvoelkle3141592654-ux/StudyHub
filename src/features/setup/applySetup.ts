@@ -146,10 +146,22 @@ export async function applySetup(draft: SetupDraft): Promise<void> {
   await (await import("@/stores/settingsStore")).useSettingsStore.getState().load();
   await (await import("@/features/files/fileService")).registerFileRoots();
   const app = useAppStore.getState();
-  app.setMode(draft.mode);
   app.setProfile(draft.profile);
   app.setSetupCompleted(true);
-  configureDataContext({ cloudEnabled: draft.mode === "cloud" });
+  if (draft.mode === "cloud") {
+    // Requires a signed-in account (wizard step 4); otherwise fall back to local mode.
+    const { currentUserId } = await import("@/sync/auth");
+    const { enableCloudMode } = await import("@/sync/syncService");
+    if (currentUserId()) await enableCloudMode();
+    else {
+      await repos.settings.set(SETTINGS.mode, "local");
+      app.setMode("local");
+      configureDataContext({ cloudEnabled: false });
+    }
+  } else {
+    app.setMode("local");
+    configureDataContext({ cloudEnabled: false, userId: "local" });
+  }
   await repos.db.flush();
   log.info("setup", `setup completed (profile=${draft.profile}, mode=${draft.mode})`);
 }

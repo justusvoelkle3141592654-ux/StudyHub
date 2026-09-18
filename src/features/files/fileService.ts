@@ -162,13 +162,46 @@ export async function importViaDialog(target: ImportTarget): Promise<FileEntry[]
   });
 }
 
-/** Read the bytes of a stored file (for previews). */
+/** Read the bytes of a stored file (for previews); falls back to the cloud copy when the local file is missing. */
 export async function readFileBytes(file: FileEntry): Promise<Uint8Array | null> {
+  const local = await readLocalBytes(file);
+  if (local) return local;
+  if (file.remote_path && file.upload_status === "uploaded") return downloadFromCloud(file);
+  return null;
+}
+
+async function readLocalBytes(file: FileEntry): Promise<Uint8Array | null> {
   if (!file.local_path) return null;
   if (file.local_path.startsWith("idb://")) return (await browserFileStore.get(file.local_path.slice(6))) ?? null;
   if (!isTauri()) return null;
   const { native } = await import("@/platform/native");
+  if (!(await native.exists(file.local_path))) return null;
   return native.readFile(file.local_path);
+}
+
+/** Download a file from Supabase Storage (cloud mode) and cache it in the working folder. */
+async function downloadFromCloud(file: FileEntry): Promise<Uint8Array | null> {
+  const { getSupabase } = await import("@/sync/supabaseClient");
+  const { SupabaseRemote } = await import("@/sync/supabaseRemote");
+  const { currentUserId } = await import("@/sync/auth");
+  const sb = getSupabase();
+  const userId = currentUserId();
+  if (!sb || !userId || !file.remote_path) return null;
+  const bytes = await new SupabaseRemote(sb).downloadFile(userId, file.remote_path);
+  try {
+    if (isTauri()) {
+      const { native, joinPath } = await import("@/platform/native");
+      const target = await joinPath(await getWorkingFolder(), "files", `${file.id.slice(0, 8)}-${file.name}`);
+      await native.writeFile(target, bytes);
+      await getRepos().files.update(file.id, { local_path: target });
+    } else {
+      await browserFileStore.put(file.id, bytes);
+      await getRepos().files.update(file.id, { local_path: `idb://${file.id}` });
+    }
+  } catch (e) {
+    log.warn("files", "caching downloaded file failed", e);
+  }
+  return bytes;
 }
 
 /** Soft-delete the row. Copies on disk are kept (no silent data loss); linked originals are never touched. */

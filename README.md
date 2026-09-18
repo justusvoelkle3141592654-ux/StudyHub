@@ -42,6 +42,38 @@ in `src-tauri/target/release/bundle/`. The NSIS installer is configured for a pe
 
 Android build instructions (SDK/NDK setup, signing key) follow in phase 13.
 
+## Cloud mode (optional) – Supabase setup
+
+Cloud synchronisation is off unless the build knows a Supabase project. Nothing about it is
+required for the app to work; without it the app is offline-only.
+
+1. Create a Supabase project (https://supabase.com).
+2. Open the SQL editor and run `supabase/schema.sql`. It creates the same tables as the local
+   database plus `rev` (server revision, bumped by a trigger) and `synced_at` (server write time),
+   enables **Row Level Security** on every table with policies restricted to
+   `user_id = auth.uid()`, and adds storage policies for one private bucket per user
+   (bucket id = user id, created by the client on first upload).
+3. Auth → Providers: enable **Email** (e-mail + password). Configure the e-mail templates for
+   confirmation and password reset as you like.
+4. Put the project URL and the anon key into a `.env` file (see `.env.example`) before building:
+
+   ```
+   VITE_SUPABASE_URL=https://<project>.supabase.co
+   VITE_SUPABASE_ANON_KEY=<anon key>
+   ```
+
+   Both values are public client credentials; access is enforced by RLS. They are compiled into
+   the frontend at build time (`npm run build` / `npm run tauri build`).
+
+How synchronisation works (details in `docs/DATENMODELL.md` §5): every write goes to SQLite first;
+in cloud mode the repository layer also appends an entry to `sync_queue`. The sync engine
+(`src/sync/syncEngine.ts`) pushes the queue, pulls rows by the per-table `synced_at` cursor,
+resolves conflicts last-write-wins (the losing version is kept as a "(Konflikt <Datum>)" copy)
+and retries network failures with exponential backoff (1 s … 5 min, after 10 failed attempts an
+entry is shown in Settings → Cloud as problematic). Triggers: app start, every 5 minutes, when the
+connection returns, and the "Sync now" button. The auth session is persisted with
+`tauri-plugin-store` in the app data directory (never in SQLite, never in the log).
+
 ## Versioning
 
 Semantic versioning. The version is maintained in `package.json`, `src-tauri/tauri.conf.json`

@@ -23,5 +23,8 @@ export const SETTINGS = {
   dashboardLayout: "dashboard.layout",
   modulesVisible: "modules.visible",
   lastSyncAt: "sync.lastSyncAt",
+  syncCursorPrefix: "sync.cursor.",
+  cloudUserId: "cloud.userId",
+  cloudEmail: "cloud.email",
   lastBackupDate: "backup.lastDate",
 } as const;

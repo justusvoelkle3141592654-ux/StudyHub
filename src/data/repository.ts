@@ -157,6 +157,11 @@ export abstract class BaseRepository<T extends SyncFields, O extends keyof NewEn
     await this.db.execute(`UPDATE ${this.table} SET sync_status = 'synced', remote_rev = ? WHERE id = ?`, [remoteRev, id]);
   }
 
+  /** Update only the known server revision (after a resolved conflict where the local row wins). */
+  async setRemoteRev(id: string, remoteRev: number | null): Promise<void> {
+    await this.db.execute(`UPDATE ${this.table} SET remote_rev = ? WHERE id = ?`, [remoteRev, id]);
+  }
+
   /** Rows changed locally (pending), used by the sync engine. */
   async getPending(): Promise<T[]> {
     return this.db.select<T>(`SELECT * FROM ${this.table} WHERE sync_status = 'pending'`);
