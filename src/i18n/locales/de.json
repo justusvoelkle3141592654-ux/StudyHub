@@ -17,7 +17,8 @@
     "settings": "Einstellungen",
     "menu": "Menü",
     "collapse": "Seitenleiste einklappen",
-    "expand": "Seitenleiste ausklappen"
+    "expand": "Seitenleiste ausklappen",
+    "subjects": "Fächer"
   },
   "common": {
     "save": "Speichern",
@@ -77,7 +78,18 @@
   },
   "dashboard": {
     "title": "Startseite",
-    "welcome": "Willkommen bei StudyHub"
+    "welcome": "Willkommen bei StudyHub",
+    "todayTimetable": "Heute im Stundenplan",
+    "noLessons": "Heute keine Stunden.",
+    "dueTasks": "Fällige Aufgaben",
+    "noTasks": "Nichts fällig.",
+    "upcomingExams": "Prüfungen in den nächsten 14 Tagen",
+    "noExams": "Keine Prüfungen in Sicht.",
+    "flashcards": "Lernkarten",
+    "cardsDueToday": "Karten heute fällig",
+    "recentNotes": "Zuletzt bearbeitete Notizen",
+    "recentDocuments": "Zuletzt bearbeitete Dokumente",
+    "reorder": "Kachel verschieben"
   },
   "startup": {
     "errorTitle": "StudyHub konnte nicht gestartet werden",
@@ -253,5 +265,108 @@
       "default": "Standard",
       "timetable": "{{days}} Tage · {{lessons}} Stunden · A/B-Wochen: {{ab}}"
     }
+  },
+  "subjects": {
+    "title": "Fächer",
+    "description": "Fächer, Kurse oder Projekte mit Farbe, Lehrkraft und Raum.",
+    "subject": "Fach",
+    "noSubject": "Kein Fach",
+    "new": "Neues Fach",
+    "edit": "Fach bearbeiten",
+    "name": "Name",
+    "teacher": "Lehrkraft / Dozent",
+    "room": "Raum",
+    "deleted": "„{{name}}“ gelöscht",
+    "deleteHint": "Das Fach wird ausgeblendet. Zugehörige Stunden, Aufgaben und Noten bleiben erhalten.",
+    "emptyTitle": "Noch keine Fächer",
+    "emptyHint": "Lege dein erstes Fach an – Stundenplan, Aufgaben und Noten bauen darauf auf."
+  },
+  "timetable": {
+    "week": "Woche",
+    "day": "Tag",
+    "newSlot": "Stunde eintragen",
+    "editSlot": "Stunde bearbeiten",
+    "weekday": "Wochentag",
+    "lesson": "Stunde",
+    "pickLesson": "Stundenzeit übernehmen",
+    "start": "Beginn",
+    "end": "Ende",
+    "weekType": "Woche",
+    "everyWeek": "Jede Woche",
+    "weekA": "Nur A-Woche",
+    "weekB": "Nur B-Woche",
+    "weekLabel": "{{type}}-Woche",
+    "toggleParity": "Diese Woche ist die andere",
+    "invalidTime": "Das Ende muss nach dem Beginn liegen.",
+    "emptyTitle": "Der Stundenplan ist leer",
+    "emptyHint": "Lege zuerst Fächer an und trage dann Stunden ein. Klicke dafür auf ein freies Feld im Raster."
+  },
+  "tasks": {
+    "new": "Neue Aufgabe",
+    "edit": "Aufgabe bearbeiten",
+    "titleLabel": "Titel",
+    "description": "Beschreibung",
+    "due": "Fällig",
+    "priority": "Priorität",
+    "prio": {
+      "1": "Hoch",
+      "2": "Mittel",
+      "3": "Niedrig"
+    },
+    "reminder": "Erinnerung",
+    "leadAtDue": "Zum Fälligkeitszeitpunkt",
+    "recurrence": "Wiederholung",
+    "recur": {
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "monthly": "Monatlich",
+      "interval": "Alle … (Tage/Wochen/Monate)"
+    },
+    "list": "Liste",
+    "calendar": "Kalender",
+    "status": "Status",
+    "open": "Offen",
+    "done": "Erledigt",
+    "markDone": "als erledigt markieren",
+    "filter": {
+      "allDates": "Alle Termine",
+      "allSubjects": "Alle Fächer"
+    },
+    "group": {
+      "overdue": "Überfällig",
+      "today": "Heute",
+      "week": "Diese Woche",
+      "later": "Später",
+      "nodate": "Ohne Termin",
+      "done": "Erledigt"
+    },
+    "emptyTitle": "Keine Aufgaben",
+    "emptyHint": "Alles erledigt – oder lege eine neue Aufgabe an.",
+    "calendarHint": "Aufgaben und Prüfungen im Monatsüberblick. Klicke auf eine Aufgabe, um sie zu bearbeiten."
+  },
+  "exams": {
+    "new": "Neue Prüfung",
+    "edit": "Prüfung bearbeiten",
+    "titleLabel": "Titel",
+    "date": "Datum",
+    "weight": "Gewichtung",
+    "weightShort": "Gewicht {{w}}",
+    "topics": "Themen",
+    "daysBefore": "{{count}} Tag vorher",
+    "daysBefore_other": "{{count}} Tage vorher",
+    "inDays": "in {{count}} Tag",
+    "inDays_other": "in {{count}} Tagen",
+    "daysAgo": "vor {{count}} Tag",
+    "daysAgo_other": "vor {{count}} Tagen",
+    "upcoming": "Anstehend",
+    "past": "Vergangen",
+    "emptyTitle": "Keine Prüfungen",
+    "emptyHint": "Trage Klausuren, Tests und Prüfungen ein – sie erscheinen auf der Startseite und im Kalender."
+  },
+  "notifications": {
+    "taskDue": "Aufgabe fällig",
+    "examSoon": "Prüfung steht an",
+    "dailyTitle": "Zeit zum Lernen",
+    "dailyBody": "{{count}} Lernkarten warten heute auf dich."
   }
 }

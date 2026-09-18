@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   BookOpen,
+  BookMarked,
   Calculator,
   CalendarDays,
   CheckSquare,
@@ -23,6 +24,10 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useUiStore } from "@/stores/uiStore";
+import { useAppStore } from "@/stores/appStore";
+import { useSetting } from "@/stores/settingsStore";
+import { SETTINGS } from "@/app/settingsKeys";
+import { PROFILE_MODULES, type ModuleId } from "@/app/modules";
 import { StatusBar } from "./StatusBar";
 
 export interface NavItem {
@@ -30,20 +35,31 @@ export interface NavItem {
   labelKey: string;
   icon: LucideIcon;
   end?: boolean;
+  module?: ModuleId;
 }
 
 export const NAV_ITEMS: NavItem[] = [
   { to: "/", labelKey: "nav.dashboard", icon: Home, end: true },
-  { to: "/timetable", labelKey: "nav.timetable", icon: CalendarDays },
-  { to: "/tasks", labelKey: "nav.tasks", icon: CheckSquare },
-  { to: "/exams", labelKey: "nav.exams", icon: GraduationCap },
-  { to: "/notes", labelKey: "nav.notes", icon: NotebookPen },
-  { to: "/flashcards", labelKey: "nav.flashcards", icon: Layers },
-  { to: "/grades", labelKey: "nav.grades", icon: BookOpen },
-  { to: "/files", labelKey: "nav.files", icon: FolderOpen },
-  { to: "/documents", labelKey: "nav.documents", icon: FileText },
-  { to: "/tools", labelKey: "nav.tools", icon: Calculator },
+  { to: "/timetable", labelKey: "nav.timetable", icon: CalendarDays, module: "timetable" },
+  { to: "/tasks", labelKey: "nav.tasks", icon: CheckSquare, module: "tasks" },
+  { to: "/exams", labelKey: "nav.exams", icon: GraduationCap, module: "exams" },
+  { to: "/subjects", labelKey: "nav.subjects", icon: BookMarked, module: "subjects" },
+  { to: "/notes", labelKey: "nav.notes", icon: NotebookPen, module: "notes" },
+  { to: "/flashcards", labelKey: "nav.flashcards", icon: Layers, module: "flashcards" },
+  { to: "/grades", labelKey: "nav.grades", icon: BookOpen, module: "grades" },
+  { to: "/files", labelKey: "nav.files", icon: FolderOpen, module: "files" },
+  { to: "/documents", labelKey: "nav.documents", icon: FileText, module: "documents" },
+  { to: "/tools", labelKey: "nav.tools", icon: Calculator, module: "tools" },
 ];
+
+/** Nav items visible for the current profile / module settings. */
+export function useVisibleNavItems(): NavItem[] {
+  const profile = useAppStore((s) => s.profile);
+  const enabled = useSetting<ModuleId[] | null>(SETTINGS.modulesVisible, null);
+  const gradesEnabled = useSetting<boolean>(SETTINGS.gradesEnabled, true);
+  const visible = new Set(enabled ?? PROFILE_MODULES[profile]);
+  return NAV_ITEMS.filter((i) => !i.module || (visible.has(i.module) && (i.module !== "grades" || gradesEnabled)));
+}
 
 function ThemeToggle() {
   const { t } = useTranslation();
@@ -65,9 +81,10 @@ function ThemeToggle() {
 
 function SidebarNav({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: () => void }) {
   const { t } = useTranslation();
+  const items = useVisibleNavItems();
   return (
     <nav aria-label={t("nav.menu")} className="flex flex-1 flex-col gap-1 p-2">
-      {NAV_ITEMS.map((item) => (
+      {items.map((item) => (
         <NavLink
           key={item.to}
           to={item.to}

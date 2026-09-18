@@ -21,6 +21,7 @@ export const SETTINGS = {
   timetableAbWeeks: "timetable.abWeeks",
   timetableWeekAStart: "timetable.weekAStart",
   dashboardLayout: "dashboard.layout",
+  modulesVisible: "modules.visible",
   lastSyncAt: "sync.lastSyncAt",
   lastBackupDate: "backup.lastDate",
 } as const;

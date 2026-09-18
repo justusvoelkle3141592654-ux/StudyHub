@@ -43,6 +43,16 @@ Legend: `[x]` done · `[ ]` open · `[~]` partially done (details in text)
 - [~] Cloud mode option is shown but disabled until phase 9 (no Supabase configured); account step shows a note
 
 ## Phase 4 – Subjects, timetable, tasks, exams, dashboard
+- [x] Subjects page (name, colour, teacher, room), reusable subject select/badge
+- [x] Timetable: week and day view on a time grid, A/B weeks with parity toggle, slot dialog with lesson-time presets
+- [x] Tasks: list grouped by overdue/today/week/later/no date, filters (status, due, subject), calendar month view (tasks + exams)
+- [x] Recurring tasks (daily/weekly/monthly × interval): completing creates the next occurrence (unit-tested rule logic)
+- [x] Reminders: per-task lead time, per-exam days-before; scheduler checks every minute and sends system notifications (Tauri plugin / browser API), sent ids persisted
+- [x] Exams: upcoming/past lists, topics, weight, reminder
+- [x] Dashboard: profile-based tiles (today's timetable, due tasks, exams in 14 days, due flashcards, recent notes/documents), drag-and-drop reorder persisted in settings
+- [x] Module visibility per profile drives the sidebar (`src/app/modules.ts`)
+- [x] Settings mirror store (`settingsStore`) + reactive repository queries (`useRepoQuery`)
+- [x] Playwright: create/complete/filter task, timetable slot visible on dashboard
 ## Phase 5 – Notes with full-text search
 ## Phase 6 – Flashcards with SM-2
 ## Phase 7 – Grades

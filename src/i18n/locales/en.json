@@ -17,7 +17,8 @@
     "settings": "Settings",
     "menu": "Menu",
     "collapse": "Collapse sidebar",
-    "expand": "Expand sidebar"
+    "expand": "Expand sidebar",
+    "subjects": "Subjects"
   },
   "common": {
     "save": "Save",
@@ -77,7 +78,18 @@
   },
   "dashboard": {
     "title": "Home",
-    "welcome": "Welcome to StudyHub"
+    "welcome": "Welcome to StudyHub",
+    "todayTimetable": "Today's timetable",
+    "noLessons": "No lessons today.",
+    "dueTasks": "Due tasks",
+    "noTasks": "Nothing due.",
+    "upcomingExams": "Exams in the next 14 days",
+    "noExams": "No exams ahead.",
+    "flashcards": "Flashcards",
+    "cardsDueToday": "cards due today",
+    "recentNotes": "Recently edited notes",
+    "recentDocuments": "Recently edited documents",
+    "reorder": "Move tile"
   },
   "startup": {
     "errorTitle": "StudyHub could not start",
@@ -253,5 +265,108 @@
       "default": "Default",
       "timetable": "{{days}} days · {{lessons}} lessons · A/B weeks: {{ab}}"
     }
+  },
+  "subjects": {
+    "title": "Subjects",
+    "description": "Subjects, courses or projects with colour, teacher and room.",
+    "subject": "Subject",
+    "noSubject": "No subject",
+    "new": "New subject",
+    "edit": "Edit subject",
+    "name": "Name",
+    "teacher": "Teacher / lecturer",
+    "room": "Room",
+    "deleted": "“{{name}}” deleted",
+    "deleteHint": "The subject is hidden. Its lessons, tasks and grades are kept.",
+    "emptyTitle": "No subjects yet",
+    "emptyHint": "Create your first subject – timetable, tasks and grades build on it."
+  },
+  "timetable": {
+    "week": "Week",
+    "day": "Day",
+    "newSlot": "Add lesson",
+    "editSlot": "Edit lesson",
+    "weekday": "Weekday",
+    "lesson": "Lesson",
+    "pickLesson": "Use lesson time",
+    "start": "Start",
+    "end": "End",
+    "weekType": "Week",
+    "everyWeek": "Every week",
+    "weekA": "Week A only",
+    "weekB": "Week B only",
+    "weekLabel": "Week {{type}}",
+    "toggleParity": "This week is the other one",
+    "invalidTime": "The end must be after the start.",
+    "emptyTitle": "The timetable is empty",
+    "emptyHint": "Create subjects first, then add lessons by clicking a free cell in the grid."
+  },
+  "tasks": {
+    "new": "New task",
+    "edit": "Edit task",
+    "titleLabel": "Title",
+    "description": "Description",
+    "due": "Due",
+    "priority": "Priority",
+    "prio": {
+      "1": "High",
+      "2": "Medium",
+      "3": "Low"
+    },
+    "reminder": "Reminder",
+    "leadAtDue": "At due time",
+    "recurrence": "Repeat",
+    "recur": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "interval": "Every … (days/weeks/months)"
+    },
+    "list": "List",
+    "calendar": "Calendar",
+    "status": "Status",
+    "open": "Open",
+    "done": "Done",
+    "markDone": "mark as done",
+    "filter": {
+      "allDates": "All dates",
+      "allSubjects": "All subjects"
+    },
+    "group": {
+      "overdue": "Overdue",
+      "today": "Today",
+      "week": "This week",
+      "later": "Later",
+      "nodate": "No date",
+      "done": "Done"
+    },
+    "emptyTitle": "No tasks",
+    "emptyHint": "All done – or create a new task.",
+    "calendarHint": "Tasks and exams in a monthly overview. Click a task to edit it."
+  },
+  "exams": {
+    "new": "New exam",
+    "edit": "Edit exam",
+    "titleLabel": "Title",
+    "date": "Date",
+    "weight": "Weight",
+    "weightShort": "weight {{w}}",
+    "topics": "Topics",
+    "daysBefore": "{{count}} day before",
+    "daysBefore_other": "{{count}} days before",
+    "inDays": "in {{count}} day",
+    "inDays_other": "in {{count}} days",
+    "daysAgo": "{{count}} day ago",
+    "daysAgo_other": "{{count}} days ago",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "emptyTitle": "No exams",
+    "emptyHint": "Enter exams and tests – they appear on the home page and in the calendar."
+  },
+  "notifications": {
+    "taskDue": "Task due",
+    "examSoon": "Exam coming up",
+    "dailyTitle": "Time to study",
+    "dailyBody": "{{count}} flashcards are waiting for you today."
   }
 }

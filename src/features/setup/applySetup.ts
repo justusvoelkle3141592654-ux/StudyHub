@@ -143,6 +143,7 @@ export async function applySetup(draft: SetupDraft): Promise<void> {
   }
 
   // 8. App state.
+  await (await import("@/stores/settingsStore")).useSettingsStore.getState().load();
   const app = useAppStore.getState();
   app.setMode(draft.mode);
   app.setProfile(draft.profile);

@@ -2,7 +2,11 @@ import { createHashRouter, Navigate, Outlet, RouterProvider } from "react-router
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "@/components/layout/AppLayout";
-import { DashboardPage } from "@/pages/DashboardPage";
+import { DashboardPage } from "@/features/dashboard/DashboardPage";
+import { SubjectsPage } from "@/features/subjects/SubjectsPage";
+import { TimetablePage } from "@/features/timetable/TimetablePage";
+import { TasksPage } from "@/features/tasks/TasksPage";
+import { ExamsPage } from "@/features/exams/ExamsPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { AppShell } from "@/app/AppShell";
@@ -28,9 +32,10 @@ const router = createHashRouter([
         element: <AppLayout />,
     children: [
       { index: true, element: <DashboardPage /> },
-      { path: "timetable", element: <PlaceholderPage titleKey="nav.timetable" /> },
-      { path: "tasks", element: <PlaceholderPage titleKey="nav.tasks" /> },
-      { path: "exams", element: <PlaceholderPage titleKey="nav.exams" /> },
+      { path: "timetable", element: <TimetablePage /> },
+      { path: "tasks", element: <TasksPage /> },
+      { path: "exams", element: <ExamsPage /> },
+      { path: "subjects", element: <SubjectsPage /> },
       { path: "notes", element: <PlaceholderPage titleKey="nav.notes" /> },
       { path: "flashcards", element: <PlaceholderPage titleKey="nav.flashcards" /> },
       { path: "grades", element: <PlaceholderPage titleKey="nav.grades" /> },
